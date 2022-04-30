@@ -1,0 +1,37 @@
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+.nav {
+  @apply sticky top-0 bg-white w-full z-50 py-3;
+}
+.nav.active {
+  @apply fixed h-full;
+}
+.nav_area {
+  @apply flex justify-between px-5 flex-wrap;
+}
+.search_btn {
+  @apply text-xl flex justify-center text-j-black-900 font-bold mt-10 border-b-2 divide-j-black-100;
+}
+.itinerary_btn {
+  @apply rounded-full text-xl text-white bg-j-black-900 py-2 px-5 mt-12;
+}
+
+@screen lg {
+  .nav {
+    @apply px-10 sticky top-0 py-0;
+  }
+  .nav_area {
+    @apply px-0 h-22;
+  }
+  .menu_list {
+    @apply flex lg:flex-row flex-col items-center;
+  }
+  .search_btn {
+    @apply text-j-blue-300 mr-10 vertical-center mt-0 border-0;
+  }
+  .itinerary_btn {
+    @apply mt-0;
+  }
+}
