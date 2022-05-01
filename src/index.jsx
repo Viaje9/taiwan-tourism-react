@@ -3,19 +3,13 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { store } from './store';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import '/src/assets/tailwind.css'
+import { BrowserRouter } from 'react-router-dom';
+import '/src/assets/tailwind.css';
 
-
-ReactDOM.createRoot(
-	document.getElementById('root')
-).render(
-	<BrowserRouter>
-		<Provider store={store}>
-			<Routes>
-				<Route path="/" element={<App />} />
-			</Routes>
-		</Provider>
-	</BrowserRouter>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
-

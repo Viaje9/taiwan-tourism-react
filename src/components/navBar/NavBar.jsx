@@ -2,7 +2,8 @@ import './NavBar.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch, useStore } from 'react-redux';
 import { selectIsSmaller } from '/src/store/screen/selector'
-export function NavBar() {
+
+export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false)
   const [menuIcon, setMenuIcon] = useState("menu")
   const isSmallerLg = useSelector(selectIsSmaller('lg'));

@@ -1,0 +1,73 @@
+.wrapper {
+  @apply flex mx-auto px-4 mb-10 lg:px-8 relative;
+}
+
+.banner {
+  @apply w-full z-10;
+}
+
+.banner > img {
+  @apply h-60 w-full object-cover lg:w-8/12 lg:ml-auto;
+}
+
+.banner_intro {
+  @apply h-20 p-3 bg-j-black-900 relative transform -translate-y-20 opacity-80;
+}
+
+.banner_title {
+  @apply text-xl text-white lg:text-4xl lg:font-bold lg:text-j-black-900;
+}
+
+.banner_subtitle {
+  @apply text-sm text-white lg:text-2xl lg:text-j-black-500;
+}
+
+.bannerBg {
+  @apply absolute right-0 flex justify-end h-64 w-full lg:mt-10;
+}
+
+.bannerBg > div {
+  @apply bg-j-blue-100 h-full;
+}
+
+.searchBar {
+  @apply relative z-40 text-lg w-full -mt-12;
+}
+
+@screen lg {
+  .wrapper {
+    max-width: 1440px;
+  }
+
+  .bannerBg {
+    max-width: 1440px;
+  }
+
+  .bannerBg,
+  .banner > img {
+    height: 640px;
+  }
+
+  .banner_intro {
+    @apply absolute bg-none opacity-100 bg-opacity-0;
+    top: 240px;
+  }
+
+  .searchBar {
+    @apply absolute z-40 text-lg w-1/2;
+    top: 460px;
+  }
+
+  .lessBanner > .banner > img,
+  .lessBanner > .bannerBg {
+    height: 360px;
+  }
+
+  .lessBanner > .banner > .searchBar {
+    @apply mt-0 top-22;
+  }
+
+  .lessBanner > .banner > .banner_intro {
+    @apply invisible;
+  }
+}
