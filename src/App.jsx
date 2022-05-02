@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { screenResize } from './store/screen/action';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from '/src/components/navBar/NavBar';
-import Home from '/src/view/home/Home';
+import TourismRouter from './router/TourismRouter'
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,11 +22,7 @@ export default function App() {
   return (
     <div>
       <NavBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<div>2</div>} />
-        <Route path='/dashboard' element={<div>3</div>} />
-      </Routes>
+      <TourismRouter/>
     </div>
   );
 }

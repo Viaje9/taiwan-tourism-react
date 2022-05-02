@@ -2,6 +2,7 @@ import './NavBar.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch, useStore } from 'react-redux';
 import { selectIsSmaller } from '/src/store/screen/selector'
+import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,9 +13,9 @@ export default function NavBar() {
 
     return !isSmallerLg || (isSmallerLg && isOpen);
   }
-  const goto = (path) => {
+  // const goto = (path) => {
 
-  }
+  // }
 
   useEffect(() => {
     setMenuIcon(isOpen ? "menuClose" : "menu")
@@ -38,20 +39,20 @@ export default function NavBar() {
         {showMenuList() ? (<div className="flex lg:w-auto w-full justify-center">
           <ul className="menu_list">
             <li className="search_btn">
-              <button onClick={() => goto('/Search/ScenicSpot')} >景點 </button>
+              <NavLink to="/scenicSpots" >景點 </NavLink>
             </li>
             <li className="search_btn">
-              <button onClick={() => goto('/Search/Hotel')} >旅宿</button>
+              <NavLink to="/hotels" >旅宿</NavLink>
             </li>
             <li className="search_btn">
-              <button onClick={() => goto('/Search/Restaurant')} >餐飲</button>
+              <NavLink to="/restaurants" >餐飲</NavLink>
             </li >
             <li className="itinerary_btn">
-              <button
-                className="vertical-center" onClick={() => goto('/ItineraryList')}
+              <NavLink
+                className="vertical-center" to="/ItineraryList"
               >
                 <i><img src="/src/assets/images/journey.svg" /></i> 自訂行程
-              </button>
+              </NavLink>
             </li >
           </ul >
         </div >) : ''}
