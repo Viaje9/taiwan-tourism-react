@@ -15,7 +15,7 @@ function getAuthorizationHeader() {
 }
 
 const request = axios.create({
-  baseURL: process.env.VUE_APP_BASE_URL,
+  baseURL: process.env.VITE_APP_BASE_URL,
   timeout: 30000,
   withCredentials: true,
   params: {
@@ -23,12 +23,15 @@ const request = axios.create({
   }
 })
 
-request.interceptors.request.use(function (config) {
-  config.headers = getAuthorizationHeader()
-  return config;
-}, function (error) {
-  // Do something with request error
-  return Promise.reject(error);
-});
+request.interceptors.request.use(
+  function (config) {
+    config.headers = getAuthorizationHeader()
+    return config
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error)
+  }
+)
 
 export default request

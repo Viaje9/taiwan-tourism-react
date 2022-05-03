@@ -4,7 +4,10 @@ export function fetchScenicSpotAll(params) {
   return request({
     url: '/v2/Tourism/ScenicSpot',
     method: 'get',
-    params
+    params: {
+      $filter: params.$filter,
+      $top: params.$top
+    }
   })
 }
 
@@ -20,7 +23,10 @@ export function fetchRestaurantAll(params) {
   return request({
     url: '/v2/Tourism/Restaurant',
     method: 'get',
-    params
+    params: {
+      $filter: params.$filter,
+      $top: params.$top
+    }
   })
 }
 
@@ -36,7 +42,10 @@ export function fetchHotelAll(params) {
   return request({
     url: '/v2/Tourism/Hotel',
     method: 'get',
-    params
+    params: {
+      $filter: params.$filter,
+      $top: params.$top
+    }
   })
 }
 
