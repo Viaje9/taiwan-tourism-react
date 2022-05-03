@@ -20,8 +20,15 @@ export default function NavBar() {
   return (
     <nav className={(isSmallerLg && isOpen ? 'active' : '') + ' nav'}>
       <div className='nav_area'>
-        <div className='vertical-center' onClick={() => goto('/')}>
-          <img className='lg:h-10 h-7' src='/src/assets/images/logo.svg' alt='台灣哪裡趣' />
+        <div className='vertical-center'>
+          <NavLink
+            to='/'
+            onClick={() => {
+              setIsOpen(!isOpen)
+            }}
+          >
+            <img className='lg:h-10 h-7' src='/src/assets/images/logo.svg' alt='台灣哪裡趣' />
+          </NavLink>
         </div>
         <div className='block lg:hidden'>
           <button

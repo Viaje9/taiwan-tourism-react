@@ -50,11 +50,13 @@ export default {
 import './Home.css'
 import { useState, useEffect } from 'react'
 import { fetchScenicSpotAll } from '/src/apis/tourism'
+import HomeRouter from '/src/router/HomeRouter'
+
 export default function Home() {
-  const id = "C1_315080500H_000073"
+  const id = 'C1_315080500H_000073'
   useEffect(() => {
-    fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then(res=>{
-      console.log(res);
+    fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then((res) => {
+      console.log(res)
     })
   })
   const bannerInfo = {
@@ -104,7 +106,7 @@ export default function Home() {
           {/* <SearchBar v-model:tab="searchTab" className="searchBar" /> */}
         </div>
       </div>
-      {/* <router-view></router-view> */}
+      <HomeRouter />
     </div>
   )
 }

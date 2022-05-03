@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { screenResize } from './store/screen/action';
 import { Routes, Route } from 'react-router-dom';
-import NavBar from '/src/components/navBar/NavBar';
+import NavBar from '/src/components/NavBar/NavBar';
 import TourismRouter from './router/TourismRouter'
 
 export default function App() {

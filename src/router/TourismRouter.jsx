@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from '../view/home/Home'
+import Home from '../view/Home/Home'
 import Hotels from '../view/Hotel/Hotels/Hotels'
 import Restaurants from '../view/Restaurant/Restaurants/Restaurants'
 import ScenicSpots from '../view/ScenicSpot/ScenicSpots/ScenicSpots'
