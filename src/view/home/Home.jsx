@@ -47,47 +47,47 @@ export default {
 </script> */
 }
 
-import './Home.css';
-import { useState, useEffect } from 'react';
-
+import './Home.css'
+import { useState, useEffect } from 'react'
+import { fetchScenicSpotAll } from '/src/apis/tourism'
 export default function Home() {
+  const id = "C1_315080500H_000073"
+  useEffect(() => {
+    fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then(res=>{
+      console.log(res);
+    })
+  })
   const bannerInfo = {
     scenicSpot: {
       title: '景點快搜',
-      subTitle: '在頂溪，找到令你怦然心動的風景',
+      subTitle: '在頂溪，找到令你怦然心動的風景'
     },
     hotel: {
       title: '住宿推薦',
-      subTitle: '享受一夜好眠，讓出遊心情更加分',
+      subTitle: '享受一夜好眠，讓出遊心情更加分'
     },
     restaurant: {
       title: '必吃美食',
-      subTitle: '匯聚八方好滋味，滿足每個挑剔的味蕾',
-    },
-  };
-  const searchData = [1];
-  const [searchTab, setSearchTab] = useState('scenicSpot');
-  const [bannerImg, setBannerImg] = useState(
-    '/src/assets/images/photoScenicSpot.jpg'
-  );
+      subTitle: '匯聚八方好滋味，滿足每個挑剔的味蕾'
+    }
+  }
+  const searchData = [1]
+  const [searchTab, setSearchTab] = useState('scenicSpot')
+  const [bannerImg, setBannerImg] = useState('/src/assets/images/photoScenicSpot.jpg')
   useEffect(() => {
     if (searchTab === 'scenicSpot') {
-      setBannerImg('/src/assets/images/photoScenicSpot.jpg');
+      setBannerImg('/src/assets/images/photoScenicSpot.jpg')
     }
     if (searchTab === 'hotel') {
-      setBannerImg('/src/assets/images/photoHotel.jpeg');
+      setBannerImg('/src/assets/images/photoHotel.jpeg')
     }
     if (searchTab === 'restaurant') {
-      setBannerImg('/src/assets/images/photoRestaurant.jpg');
+      setBannerImg('/src/assets/images/photoRestaurant.jpg')
     }
-  }, [searchTab]);
+  }, [searchTab])
   return (
     <div className='home'>
-      <div
-        className={
-          (searchData.length ? 'lessBanner' : '') + ' wrapper justify-end'
-        }
-      >
+      <div className={(searchData.length ? 'lessBanner' : '') + ' wrapper justify-end'}>
         {/* banner背景色塊 */}
         <div className='bannerBg'>
           <div className='w-1/12 mr-3'></div>
@@ -106,5 +106,5 @@ export default function Home() {
       </div>
       {/* <router-view></router-view> */}
     </div>
-  );
+  )
 }

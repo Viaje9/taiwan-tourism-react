@@ -1,26 +1,22 @@
-import {
-    Route,
-    Routes
-} from "react-router-dom";
-import Home from "../view/home/Home";
-import Hotels from "../view/Hotel/Hotels/Hotels";
-import Restaurants from "../view/Restaurant/Restaurants/Restaurants";
-import ScenicSpots from "../view/ScenicSpot/ScenicSpots/ScenicSpots";
-import HotelDetail from "../view/Hotel/HotelDetail/HotelDetail";
-import RestaurantDetail from "../view/Restaurant/RestaurantDetail/RestaurantDetail";
-import ScenicSpotDetail from "../view/ScenicSpot/ScenicSpotDetail/ScenicSpotDetail";
-
+import { Route, Routes } from 'react-router-dom'
+import Home from '../view/home/Home'
+import Hotels from '../view/Hotel/Hotels/Hotels'
+import Restaurants from '../view/Restaurant/Restaurants/Restaurants'
+import ScenicSpots from '../view/ScenicSpot/ScenicSpots/ScenicSpots'
+import HotelDetail from '../view/Hotel/HotelDetail/HotelDetail'
+import RestaurantDetail from '../view/Restaurant/RestaurantDetail/RestaurantDetail'
+import ScenicSpotDetail from '../view/ScenicSpot/ScenicSpotDetail/ScenicSpotDetail'
 
 export default function TourismRouter() {
-    return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="hotels" element={<Hotels />} />
-            <Route path="hotels/:id" element={<HotelDetail />} />
-            <Route path="restaurants" element={<Restaurants />} />
-            <Route path="restaurants/:id" element={<RestaurantDetail />} />
-            <Route path="scenicSpots" element={<ScenicSpots />} />
-            <Route path="scenicSpots/:id" element={<ScenicSpotDetail />} />
-        </Routes>
-    )
+  return (
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='hotels' element={<Hotels />} />
+      <Route path='hotels/:id' element={<HotelDetail />} />
+      <Route path='restaurants' element={<Restaurants />} />
+      <Route path='restaurants/:id' element={<RestaurantDetail />} />
+      <Route path='scenicSpots' element={<ScenicSpots />} />
+      <Route path='scenicSpots/:id' element={<ScenicSpotDetail />} />
+    </Routes>
+  )
 }

@@ -1,12 +1,12 @@
-import request from '@/utils/request'
+import request from '/src/utils/request'
 
-export function fetchScenicSpotAll(params) {
+export function fetchScenicSpotAll({ $filter, $top }) {
   return request({
     url: '/v2/Tourism/ScenicSpot',
     method: 'get',
     params: {
-      $filter: params.$filter,
-      $top: params.$top
+      $filter,
+      $top
     }
   })
 }
@@ -19,13 +19,13 @@ export function fetchScenicSpot(city, params) {
   })
 }
 
-export function fetchRestaurantAll(params) {
+export function fetchRestaurantAll({ $filter, $top }) {
   return request({
     url: '/v2/Tourism/Restaurant',
     method: 'get',
     params: {
-      $filter: params.$filter,
-      $top: params.$top
+      $filter,
+      $top
     }
   })
 }
@@ -38,13 +38,13 @@ export function fetchRestaurant(city, params) {
   })
 }
 
-export function fetchHotelAll(params) {
+export function fetchHotelAll({ $filter, $top }) {
   return request({
     url: '/v2/Tourism/Hotel',
     method: 'get',
     params: {
-      $filter: params.$filter,
-      $top: params.$top
+      $filter,
+      $top
     }
   })
 }
