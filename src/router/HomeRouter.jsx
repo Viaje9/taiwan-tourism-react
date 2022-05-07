@@ -4,6 +4,7 @@ import Restaurants from '../view/Restaurant/Restaurants/Restaurants'
 import ScenicSpots from '../view/ScenicSpot/ScenicSpots/ScenicSpots'
 
 
+
 export default function HomeRouter() {
   return (
     <Routes>

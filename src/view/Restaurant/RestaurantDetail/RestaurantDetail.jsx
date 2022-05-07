@@ -1,5 +1,15 @@
-export default function RestaurantDetail () {
+// import { Detail } from '@/components/Detail/Detail.jsx';
+
+export default function RestaurantDetail() {
     return (
-        <div>Restaurant Detail</div>
+        <div>
+            RestaurantDetail
+            {/* <Detail
+                detailiID={id}
+                info={detailInfo}
+                category="restaurant"
+                categoryStr="餐飲"
+            /> */}
+        </div>
     )
 }

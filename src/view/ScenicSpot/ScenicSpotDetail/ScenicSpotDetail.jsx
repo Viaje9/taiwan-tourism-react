@@ -1,5 +1,13 @@
-export default function ScenicSpotDetail () {
+export default function ScenicSpotDetail() {
     return (
-        <div>ScenicSpot Detail</div>
+        <div>
+            ScenicSpotDetail
+            {/* <Detail
+      detailiID={id}
+      info={detailInfo}
+      category="scenicSpot"
+      categoryStr="景點"
+    /> */}
+        </div>
     )
 }

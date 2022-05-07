@@ -6,6 +6,8 @@ import ScenicSpots from '../view/ScenicSpot/ScenicSpots/ScenicSpots'
 import HotelDetail from '../view/Hotel/HotelDetail/HotelDetail'
 import RestaurantDetail from '../view/Restaurant/RestaurantDetail/RestaurantDetail'
 import ScenicSpotDetail from '../view/ScenicSpot/ScenicSpotDetail/ScenicSpotDetail'
+import ItineraryList from '../view/ItineraryList/ItineraryList'
+
 
 export default function TourismRouter() {
   return (
@@ -17,6 +19,7 @@ export default function TourismRouter() {
       <Route path='restaurants/:id' element={<RestaurantDetail />} />
       <Route path='scenicSpots' element={<ScenicSpots />} />
       <Route path='scenicSpots/:id' element={<ScenicSpotDetail />} />
+      <Route path='itineraryList' element={<ItineraryList />} />
     </Routes>
   )
 }
