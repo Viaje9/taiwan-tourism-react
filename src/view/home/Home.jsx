@@ -50,7 +50,10 @@ export default {
 import './Home.css'
 import { useState, useEffect } from 'react'
 import { fetchScenicSpotAll } from '/src/apis/tourism'
-import HomeRouter from '/src/router/HomeRouter'
+import { Outlet } from 'react-router-dom'
+import { selectSearchData } from '/src/store/app/selector'
+import { useSelector, useDispatch, useStore } from 'react-redux'
+import SearchBar from '/src/components/SearchBar/SearchBar'
 
 export default function Home() {
   const id = 'C1_315080500H_000073'
@@ -73,7 +76,8 @@ export default function Home() {
       subTitle: '匯聚八方好滋味，滿足每個挑剔的味蕾'
     }
   }
-  const searchData = [1]
+  const searchData = useSelector(selectSearchData)
+
   const [searchTab, setSearchTab] = useState('scenicSpot')
   const [bannerImg, setBannerImg] = useState('/src/assets/images/photoScenicSpot.jpg')
   useEffect(() => {
@@ -103,10 +107,10 @@ export default function Home() {
             <p className='banner_title'>{bannerInfo[searchTab].title}</p>
             <p className='banner_subtitle'>{bannerInfo[searchTab].subTitle}</p>
           </div>
-          {/* <SearchBar v-model:tab="searchTab" className="searchBar" /> */}
+          <SearchBar tab={searchTab} className="searchBar" />
         </div>
       </div>
-      <HomeRouter />
+      <Outlet/>
     </div>
   )
 }
