@@ -1,3 +1,5 @@
+import './Restaurants.css';
+
 export default function Restaurants() {
     return (
         <div className="contentWrapper">

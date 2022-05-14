@@ -1,3 +1,5 @@
+import './Modify.css';
+
 export default function Modify() {
   const clickDialogs = (result) => {
     const { type, params } = dialogsConfig.value
@@ -9,7 +11,7 @@ export default function Modify() {
     }
     showDialogs.value = false
   }
-  
+
   return (
     <div className="wrap">
       <div>

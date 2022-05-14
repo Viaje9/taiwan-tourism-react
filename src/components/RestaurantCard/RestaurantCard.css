@@ -1,0 +1,51 @@
+.main {
+  height: 176px;
+  @apply overflow-hidden py-2;
+}
+
+.imgArea {
+  @apply rounded-2xl w-1/3 h-full bg-cover bg-center;
+  background-image: url('~@/assets/images/photoRestaurant.jpg');
+}
+
+.textArea {
+  @apply bg-white w-2/3 h-full px-3 py-2;
+}
+
+.card_title {
+  @apply text-lg font-bold text-j-black-900 mb-1 truncate;
+}
+
+.card_info {
+  @apply text-base text-j-black-500 h-12 overflow-hidden;
+}
+
+.card_footer {
+  @apply flex w-full mt-1;
+}
+
+.card_footer > div {
+  @apply flex flex-1 text-base text-j-black-900 items-center transform;
+}
+
+.icon {
+  @apply mr-2;
+}
+
+@screen lg {
+  .main {
+    height: 207px;
+    @apply mb-6;
+  }
+  .imgArea {
+    @apply w-1/2;
+  }
+
+  .cardArea {
+    @apply w-1/2;
+  }
+
+  .card_footer {
+    @apply mt-3;
+  }
+}

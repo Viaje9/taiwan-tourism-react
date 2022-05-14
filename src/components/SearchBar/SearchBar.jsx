@@ -1,4 +1,5 @@
-export default function SearchBox() {
+import './SearchBar.css';
+export default function SearchBar() {
   return (
     <div>
       <div className="main">

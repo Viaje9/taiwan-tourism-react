@@ -1,4 +1,6 @@
 import Dialogs from '/src/components/Dialogs/Dialogs';
+import './ItineraryList.css';
+
 export default function ItineraryList() {
   const addSchedule = () => {
     const last = itineraryList.value[lastScheduleIndex.value]

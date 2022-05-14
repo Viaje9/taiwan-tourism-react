@@ -1,3 +1,4 @@
+import './ScenicSpots.css';
 export default function ScenicSpots() {
   return (
     <div className="contentWrapper">
