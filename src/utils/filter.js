@@ -1,4 +1,4 @@
-import { cities } from '@/assets/json/taiwan-zip-code.json'
+import { cities } from '/src/assets/json/taiwan-zip-code.json'
 
 export function filterCity(zipCode) {
   if (zipCode) {
