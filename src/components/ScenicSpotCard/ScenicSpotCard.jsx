@@ -1,3 +1,4 @@
+import './ScenicSpotCard.css';
 export default function ScenicSpotCard({ cardData }) {
 
   const clickAddFavorite = () => {

@@ -1,3 +1,4 @@
+import './Dialogs.css';
 export default function Dialogs({doDelete}) {
   return (
     <div className="dialogs">

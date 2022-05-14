@@ -1,3 +1,5 @@
+import './RestaurantCard.css';
+
 export default function RestaurantCard({ cardData }) {
 
   const clickAddFavorite = () => {

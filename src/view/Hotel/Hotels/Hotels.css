@@ -1,0 +1,29 @@
+#Hotels .contentWrapper {
+  @apply flex mx-auto px-4 mb-10 lg:px-8;
+}
+#Hotels .title {
+  @apply text-2xl font-bold text-j-black-900 lg:text-4xl;
+}
+#Hotels .title::before {
+  content: '';
+  @apply relative inline-block bg-j-orange w-1 h-5 mr-5;
+}
+#Hotels .subtitle {
+  @apply hidden ml-10;
+}
+#Hotels .cardGroup > div {
+  @apply mx-5 mb-10;
+}
+
+@screen lg {
+  #Hotels .contentWrapper {
+    max-width: 1440px;
+    @apply px-20;
+  }
+  #Hotels .subtitle {
+    @apply text-lg text-j-black-500 font-medium align-middle leading-5 inline;
+  }
+  #Hotels .cardGroup {
+    @apply flex flex-wrap;
+  }
+}

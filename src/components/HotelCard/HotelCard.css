@@ -1,0 +1,51 @@
+.main {
+  height: 373px;
+  width: 265px;
+  @apply rounded-2xl overflow-hidden border border-j-black-100;
+}
+
+.imgArea {
+  @apply w-full h-3/5 bg-cover bg-center;
+  background-image: url('~@/assets/images/photoScenicSpot.jpg');
+}
+
+.textArea {
+  @apply bg-white h-2/5 px-5 py-4;
+}
+
+.card_title {
+  @apply text-lg font-bold text-j-black-900 mb-2 truncate;
+}
+
+.card_footer {
+  @apply flex w-full mt-5;
+}
+
+.card_footer > div {
+  @apply flex flex-1 text-base text-j-black-900 items-center transform;
+}
+
+.icon {
+  @apply mr-2;
+}
+
+@screen lg {
+  .main {
+    width: 300px;
+  }
+  .imgArea {
+    @apply h-2/3;
+  }
+
+  .cardArea {
+    @apply h-1/3;
+  }
+
+  .card_footer {
+    @apply mt-3;
+  }
+
+  .card_footer > div:last-child {
+    @apply justify-end;
+  }
+}

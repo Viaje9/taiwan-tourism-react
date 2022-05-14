@@ -18,81 +18,83 @@ export default function NavBar() {
   }, [isOpen])
 
   return (
-    <nav className={(isSmallerLg && isOpen ? 'active' : '') + ' nav'}>
-      <div className='nav_area'>
-        <div className='vertical-center'>
-          <NavLink
-            to='/'
-            onClick={() => {
-              setIsOpen(!isOpen)
-            }}
-          >
-            <img className='lg:h-10 h-7' src='/src/assets/images/logo.svg' alt='台灣哪裡趣' />
-          </NavLink>
-        </div>
-        <div className='block lg:hidden'>
-          <button
-            className='py-2'
-            onClick={() => {
-              setIsOpen(!isOpen)
-            }}
-          >
-            <img className='h-5' src={`/src/assets/images/${menuIcon}.svg`} />
-          </button>
-        </div>
-        {showMenuList() ? (
-          <div className='flex lg:w-auto w-full justify-center'>
-            <ul className='menu_list'>
-              <li className='search_btn'>
-                <NavLink
-                  to='/search/scenicSpot'
-                  onClick={() => {
-                    setIsOpen(false)
-                  }}
-                >
-                  景點{' '}
-                </NavLink>
-              </li>
-              <li className='search_btn'>
-                <NavLink
-                  to='/search/hotel'
-                  onClick={() => {
-                    setIsOpen(false)
-                  }}
-                >
-                  旅宿
-                </NavLink>
-              </li>
-              <li className='search_btn'>
-                <NavLink
-                  to='/search/restaurant'
-                  onClick={() => {
-                    setIsOpen(false)
-                  }}
-                >
-                  餐飲
-                </NavLink>
-              </li>
-              <li className='itinerary_btn'>
-                <NavLink
-                  className='vertical-center'
-                  to='/ItineraryList'
-                  onClick={() => {
-                    setIsOpen(false)
-                  }}
-                >
-                  <i>
-                    <img src='/src/assets/images/journey.svg' />
-                  </i>{' '}
-                  自訂行程
-                </NavLink>
-              </li>
-            </ul>
+    <div id='NavBar'>
+      <nav className={(isSmallerLg && isOpen ? 'active' : '') + ' nav'}>
+        <div className='nav_area'>
+          <div className='vertical-center'>
+            <NavLink
+              to='/'
+              onClick={() => {
+                setIsOpen(!isOpen)
+              }}
+            >
+              <img className='lg:h-10 h-7' src='/src/assets/images/logo.svg' alt='台灣哪裡趣' />
+            </NavLink>
           </div>
-        ) : (
-          ''
-        )}
-      </div>
-    </nav>
+          <div className='block lg:hidden'>
+            <button
+              className='py-2'
+              onClick={() => {
+                setIsOpen(!isOpen)
+              }}
+            >
+              <img className='h-5' src={`/src/assets/images/${menuIcon}.svg`} />
+            </button>
+          </div>
+          {showMenuList() ? (
+            <div className='flex lg:w-auto w-full justify-center'>
+              <ul className='menu_list'>
+                <li className='search_btn'>
+                  <NavLink
+                    to='/scenicSpots'
+                    onClick={() => {
+                      setIsOpen(false)
+                    }}
+                  >
+                    景點{' '}
+                  </NavLink>
+                </li>
+                <li className='search_btn'>
+                  <NavLink
+                    to='/hotels'
+                    onClick={() => {
+                      setIsOpen(false)
+                    }}
+                  >
+                    旅宿
+                  </NavLink>
+                </li>
+                <li className='search_btn'>
+                  <NavLink
+                    to='/restaurants'
+                    onClick={() => {
+                      setIsOpen(false)
+                    }}
+                  >
+                    餐飲
+                  </NavLink>
+                </li>
+                <li className='itinerary_btn'>
+                  <NavLink
+                    className='vertical-center'
+                    to='/ItineraryList'
+                    onClick={() => {
+                      setIsOpen(false)
+                    }}
+                  >
+                    <i>
+                      <img src='/src/assets/images/journey.svg' />
+                    </i>{' '}
+                    自訂行程
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
+      </nav>
+    </div>
   )
 }

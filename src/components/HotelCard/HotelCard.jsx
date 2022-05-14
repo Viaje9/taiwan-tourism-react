@@ -1,3 +1,4 @@
+import './HotelCard.css';
 export default function HotelCard({ cardData }) {
 
   const clickAddFavorite = () => {
