@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import './SearchBar.css';
-export default function SearchBar() {
-=======
 import { option } from '/src/assets/json/options.json'
 import { fetchScenicSpotAll, fetchRestaurantAll, fetchHotelAll } from '/src/apis/tourism'
 import { filterCity } from '/src/utils/filter'
@@ -118,7 +114,6 @@ export default function SearchBar() {
         navigate(`/search/${tab}`)
       })
   }
->>>>>>> 7d4f33e6799c526ad2f77d62e6242441522fbc47
   return (
     <div>
       <div className='main'>
