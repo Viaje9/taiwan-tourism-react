@@ -61,7 +61,7 @@ export default function Home() {
     fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then((res) => {
       console.log(res)
     })
-  })
+  },[])
   const bannerInfo = {
     scenicSpot: {
       title: '景點快搜',
@@ -107,10 +107,12 @@ export default function Home() {
             <p className='banner_title'>{bannerInfo[searchTab].title}</p>
             <p className='banner_subtitle'>{bannerInfo[searchTab].subTitle}</p>
           </div>
-          <SearchBar tab={searchTab} className="searchBar" />
+          <div className='searchBar'>
+            <SearchBar tab={searchTab} />
+          </div>
         </div>
       </div>
-      <Outlet/>
+      <Outlet />
     </div>
   )
 }

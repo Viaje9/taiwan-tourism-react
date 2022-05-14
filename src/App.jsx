@@ -17,7 +17,7 @@ export default function App() {
     return () => {
       window.removeEventListener('resize', onResize);
     };
-  }, [dispatch]);
+  },[dispatch]);
 
   return (
     <div>

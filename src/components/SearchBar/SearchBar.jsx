@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch, useStore } from 'react-redux'
 import { selectSearchData } from '/src/store/app/selector'
-import { setSearchData } from '/src/store/app/action';
+import { setSearchData } from '/src/store/app/action'
 
 import './SearchBar.css'
 
@@ -29,7 +29,6 @@ export default function SearchBar() {
   })
 
   const searchData = useSelector(selectSearchData)
-
 
   const apiParams = () => {
     const { city, category, keyword } = searchParams
@@ -80,7 +79,7 @@ export default function SearchBar() {
     if (tab === 'restaurant') {
       return fetchRestaurantAll
     }
-    
+
     return () => {}
   }
 
@@ -98,15 +97,14 @@ export default function SearchBar() {
     setLoading(true)
     fetchApi()(apiParams())
       .then(({ data }) => {
-        const items = data
-          .filter((_, i) => i < 30)
-          // FIXME: 待確認city參數
-          // .map((e) => {
-          //   console.log(e);
-          //   e.City = e.City || filterCity(e.ZipCode) || e.Address.slice(0, 3)
-          //   return e
-          // })
-          dispatch(setSearchData(items))
+        const items = data.filter((_, i) => i < 30)
+        // FIXME: 待確認city參數
+        // .map((e) => {
+        //   console.log(e);
+        //   e.City = e.City || filterCity(e.ZipCode) || e.Address.slice(0, 3)
+        //   return e
+        // })
+        dispatch(setSearchData(items))
       })
       .finally(() => {
         const { tab } = searchParams
@@ -115,7 +113,7 @@ export default function SearchBar() {
       })
   }
   return (
-    <div>
+    <div id='SearchBar'>
       <div className='main'>
         <div className='tabArea'>
           <ul className='flex'>
