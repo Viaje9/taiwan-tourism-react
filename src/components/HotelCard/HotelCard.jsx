@@ -1,5 +1,5 @@
 import './HotelCard.css'
-import { bgImgSrc } from '/src/utils/onImgError'
+import { bgImgSrc } from '/src/utils/onErrorImg'
 export default function HotelCard({ cardData }) {
   const clickAddFavorite = () => {
     this.isFavorite = !this.isFavorite
