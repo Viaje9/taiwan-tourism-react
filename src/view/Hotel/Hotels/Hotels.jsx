@@ -1,7 +1,8 @@
 import './Hotels.css'
+// TODO: Jane
 export default function Hotels() {
   return (
-    <div id="Hotels">
+    <div id='Hotels'>
       <div className='contentWrapper'>
         <div className='hotelArea w-full overflow-hidden'>
           <div className='flex items-center mb-5'>
