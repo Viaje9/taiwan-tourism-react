@@ -1,8 +1,19 @@
 import './HotelCard.css'
 import { bgImgSrc } from '/src/utils/onErrorImg'
+import { useSelector, useDispatch, useStore } from 'react-redux'
+import { selectIsFavorite } from '/src/store/app/selector'
+import { addFavorite, removeFavorite } from '/src/store/app/action'
+import { HOTEL } from '/src/constant'
+
 export default function HotelCard({ cardData }) {
+  const dispatch = useDispatch()
+  const isFavorite = useSelector(selectIsFavorite(HOTEL, cardData.HotelID))
   const clickAddFavorite = () => {
-    this.isFavorite = !this.isFavorite
+    const target = {
+      id: cardData.HotelID,
+      category: HOTEL
+    }
+    dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
   }
 
   return (
