@@ -17,7 +17,7 @@ export default function HotelCard({ cardData }) {
   }
 
   return (
-    <div>
+    <div className='hotel'>
       <div className='main'>
         <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
         <div className='textArea'>

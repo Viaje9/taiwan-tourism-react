@@ -1,53 +1,53 @@
-.main {
+.scenic-spot-card .main {
   height: 320px;
   width: 260px;
   box-shadow: 0px 3px 6px #00000029;
   @apply rounded-2xl overflow-hidden;
 }
 
-.imgArea {
+.scenic-spot-card .imgArea {
   @apply w-full h-1/2 bg-cover bg-center z-20;
   background-image: url('~@/assets/images/photoScenicSpot.jpg');
 }
 
-.textArea {
+.scenic-spot-card .textArea {
   @apply bg-white h-1/2 px-5 py-4 z-20;
 }
 
-.card_title {
+.scenic-spot-card .card_title {
   @apply text-lg font-bold text-j-black-900 mb-2 truncate;
 }
 
-.card_info {
+.scenic-spot-card .card_info {
   @apply text-base text-j-black-500 h-12 overflow-hidden;
 }
 
-.card_footer {
+.scenic-spot-card .card_footer {
   @apply flex w-full mt-5;
 }
 
-.card_footer > div {
+.scenic-spot-card .card_footer > div {
   @apply flex flex-1 text-base text-j-black-900 items-center transform;
 }
 
-.icon {
+.scenic-spot-card .icon {
   @apply mr-2;
 }
 
 @screen lg {
-  .main {
+  .scenic-spot-card .main {
     height: 383px;
     width: 340px;
   }
-  .card_title {
+  .scenic-spot-card .card_title {
     @apply mb-4;
   }
 
-  .card_footer {
+  .scenic-spot-card .card_footer {
     @apply mt-10;
   }
 
-  .card_footer > div:last-child {
+  .scenic-spot-card .card_footer > div:last-child {
     @apply justify-end;
   }
 }
