@@ -1,44 +1,67 @@
 // FIXME:還不能使用
-export default function Detail({ detailiID, info, category, categoryStr }) {
+import './Detail.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectIsFavorite } from '/src/store/app/selector'
+import { addFavorite, removeFavorite } from '/src/store/app/action'
+import { useState,useEffect } from 'react'
+
+export default function Detail({ detailID, info, category, categoryStr }) {
+  const dispatch = useDispatch()
+  const [ coordinate , setCoordinate ] = useState('')
+
+  const isFavorite = useSelector(selectIsFavorite(category, info.ScenicSpotID))
+  const clickAddFavorite = () => {
+    const target = {
+      id: info.ScenicSpotID,
+      category: category
+    }
+    dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
+  }
+
+
   return (
-    <div className='wrap'>
+    <div className='wrap Detail'>
       <div className='header'>
-        <div className='header_title'>{info.Name}</div>
+        <div className='header_title'>{info.ScenicSpotName}</div>
         <div className='location'>
-          <img src='@/assets/images/map.svg' />
+          <img src='/src/assets/images/map.svg' />
           {info.City}
         </div>
         <div className='left_side'>
-          <a className='fast_search' target='_blank' href={`https://www.google.com/search?q=${info.Name}`}>
-            <img src='@/assets/images/googleBig.svg' />
+          <a className='fast_search' target='_blank' href={`https://www.google.com/search?q=${info.ScenicSpotName}`}>
+            <img src='/src/assets/images/googleBig.svg' />
             快速搜索
           </a>
-          <div className='favorite' onClick={clickAddFavorite}>
-            {isFavorite && <img src='@/assets/images/addedJourneyBig.svg' />}
-            {!isFavorite && <img src='@/assets/images/addJourneyBig.svg' />}
+          <div className='favorite' onClick={() => clickAddFavorite()}>
+            {isFavorite ? (
+              <img src='/src/assets/images/addedJourney.svg' />
+            ) : (
+              <img src='/src/assets/images/addJourney.svg' />
+            )}
             加入收藏
           </div>
           <div className='desc'>{info.DescriptionDetail && <>{info.Description}</>}</div>
         </div>
-        <div className='images'>
+        {/* <img className='img' src={info?.Picture.PictureUrl1}/> */}
+        {/* <div className='images'>
           <div className='main_img'>
-            <img className='img' src={info.Picture.PictureUrl1} alt={info.Picture.PictureDescription1} />
+            {info.Picture.PictureUrl1 ?? <img className='img' src={info.Picture.PictureUrl1} alt={info.Picture.PictureDescription1} />}
           </div>
           <div className='side_img'>
-            <img className='img' src={info.Picture.PictureUrl1} alt={info.Picture.PictureDescription1} />
+          {info.Picture.PictureUrl1 ?? <img className='img' src={info.Picture.PictureUrl1} alt={info.Picture.PictureDescription1} />}
           </div>
           <div className='side_img'>
-            <img className='img' src={info.Picture.PictureUrl2} alt={info.Picture.PictureDescription1} />
+          {info.Picture.PictureUrl2 ?? <img className='img' src={info.Picture.PictureUrl2} alt={info.Picture.PictureDescription2} />}
           </div>
           <div className='side_img'>
-            <img className='img' src={info.Picture.PictureUrl3} alt={info.Picture.PictureDescription1} />
+          {info.Picture.PictureUrl3 ?? <img className='img' src={info.Picture.PictureUrl3} alt={info.Picture.PictureDescription3} />}
           </div>
-        </div>
+        </div> */}
         <div className='intro'>
           <div className='lg:col-span-8'>
             <div className='content'>
               <div className='content_title'>{categoryStr}介紹</div>
-              <div className='content_subtitle'>{info.Picture.PictureDescription1}</div>
+              {/* <div className='content_subtitle'>{info.Picture.PictureDescription1}</div> */}
               <div className='content_desc'>{info.DescriptionDetail || info.Description}</div>
             </div>
           </div>
@@ -58,7 +81,7 @@ export default function Detail({ detailiID, info, category, categoryStr }) {
                 <div className='info_text'>{info.Address}</div>
               </div>
               <div className='info_map'>
-                {info.Position.PositionLat && info.Position.PositionLon && (
+                {/* {info.Position.PositionLat && info.Position.PositionLon && (
                   <iframe
                     src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d${info.Position.PositionLat}!3d${info.Position.PositionLon}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd03748c065726588!2z${coordinate}!5e0!3m2!1sen!2szh-tw`}
                     className='w-full'
@@ -66,7 +89,7 @@ export default function Detail({ detailiID, info, category, categoryStr }) {
                     allowfullscreen=''
                     loading='lazy'
                   ></iframe>
-                )}
+                )} */}
               </div>
             </div>
           </div>

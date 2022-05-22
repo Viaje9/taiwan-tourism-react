@@ -1,12 +1,15 @@
 import './HotelCard.css'
 import { bgImgSrc } from '/src/utils/onErrorImg'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { selectIsFavorite } from '/src/store/app/selector'
 import { addFavorite, removeFavorite } from '/src/store/app/action'
 import { HOTEL } from '/src/constant'
 
 export default function HotelCard({ cardData }) {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const isFavorite = useSelector(selectIsFavorite(HOTEL, cardData.HotelID))
   const clickAddFavorite = () => {
     const target = {
@@ -17,7 +20,7 @@ export default function HotelCard({ cardData }) {
   }
 
   return (
-    <div className='main hotel'>
+    <div className='main hotel' onClick={() => {navigate(`hotels/${cardData.HotelID}`)}}>
       <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.HotelName}</h4>
