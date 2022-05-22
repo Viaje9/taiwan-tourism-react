@@ -1,9 +1,8 @@
 import './Home.css'
 import { useState, useEffect } from 'react'
 import { fetchScenicSpotAll, fetchHotelAll, fetchRestaurantAll } from '/src/apis/tourism'
-import { Outlet } from 'react-router-dom'
 import { selectSearchData } from '/src/store/app/selector'
-import { useSelector, useDispatch, useStore } from 'react-redux'
+import { useSelector } from 'react-redux'
 import SearchBar from '/src/components/SearchBar/SearchBar'
 import { Route, Routes } from 'react-router-dom'
 import { lazy } from 'react'
@@ -67,10 +66,7 @@ export default function Home() {
     })
   }, [])
 
-  useEffect(() => {
-    console.log('change defaultData')
-    console.log(defaultData)
-  }, [defaultData])
+  useEffect(() => {}, [defaultData])
 
   useEffect(() => {
     if (searchTab === 'scenicSpot') {

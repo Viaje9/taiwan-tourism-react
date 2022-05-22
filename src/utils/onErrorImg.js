@@ -41,7 +41,9 @@ export const bgImgSrc = (src) => {
       img.src = src
 
       img.onload = () => {
-        imgRef.style.backgroundImage = `url(${src})`
+        if (imgRef) {
+          imgRef.style.backgroundImage = `url(${src})`
+        }
       }
       img.onerror = () => setErrorBgImg(imgRef)
     }
