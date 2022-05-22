@@ -11,7 +11,7 @@
   @apply bg-white w-2/3 h-full px-3 py-2;
 }
 
-.restaurant .restaurant .card_title {
+.restaurant .card_title {
   @apply text-lg font-bold text-j-black-900 mb-1 truncate;
 }
 
@@ -19,7 +19,7 @@
   @apply text-base text-j-black-500 h-12 overflow-hidden;
 }
 
-.card_footer {
+.restaurant .card_footer {
   @apply flex w-full mt-1;
 }
 
