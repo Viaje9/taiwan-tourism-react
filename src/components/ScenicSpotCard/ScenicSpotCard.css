@@ -1,4 +1,4 @@
-.scenic-spot-card .main {
+.scenic-spot-card.main {
   height: 320px;
   width: 260px;
   box-shadow: 0px 3px 6px #00000029;
@@ -35,7 +35,7 @@
 }
 
 @screen lg {
-  .scenic-spot-card .main {
+  .scenic-spot-card.main {
     height: 383px;
     width: 340px;
   }

@@ -1,6 +1,6 @@
 import './Home.css'
 import { useState, useEffect } from 'react'
-import { fetchScenicSpotAll } from '/src/apis/tourism'
+import { fetchScenicSpotAll, fetchHotelAll, fetchRestaurantAll } from '/src/apis/tourism'
 import { Outlet } from 'react-router-dom'
 import { selectSearchData } from '/src/store/app/selector'
 import { useSelector, useDispatch, useStore } from 'react-redux'
@@ -14,11 +14,6 @@ const ScenicSpots = lazy(() => import('/src/view/ScenicSpot/ScenicSpots/ScenicSp
 
 export default function Home() {
   const id = 'C1_315080500H_000073'
-  useEffect(() => {
-    // fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then((res) => {
-    //   console.log(res)
-    // })
-  }, [])
   const bannerInfo = {
     scenicSpot: {
       title: '景點快搜',
@@ -34,9 +29,52 @@ export default function Home() {
     }
   }
   const searchData = useSelector(selectSearchData)
-
   const [searchTab, setSearchTab] = useState('scenicSpot')
   const [bannerImg, setBannerImg] = useState('/src/assets/images/photoScenicSpot.jpg')
+  const [defaultData, setDefaultData] = useState({
+    scenicSpot: [],
+    hotel: [],
+    restaurant: []
+  })
+
+  useEffect(() => {
+    // fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then((res) => {
+    //   console.log(res)
+    // })
+
+    fetchScenicSpotAll({
+      $filter: `City eq '雲林縣' and Picture/PictureUrl3 ne null`,
+      $top: 3
+    }).then(({ data }) => {
+      const newDefault = defaultData
+      newDefault.scenicSpot = data
+      setDefaultData({ ...newDefault })
+    })
+
+    fetchHotelAll({
+      $filter: `City eq '臺北市' and Grade eq '五星級'`,
+      $top: 4
+    }).then(({ data }) => {
+      const newDefault = defaultData
+      newDefault.hotel = data
+      setDefaultData({ ...newDefault })
+    })
+
+    fetchRestaurantAll({
+      $filter: `City eq '彰化縣' and Picture/PictureUrl3 ne null and WebsiteUrl ne null`,
+      $top: 6
+    }).then(({ data }) => {
+      const newDefault = defaultData
+      newDefault.restaurant = data
+      setDefaultData({ ...newDefault })
+    })
+  }, [])
+
+  useEffect(() => {
+    console.log('change defaultData')
+    console.log(defaultData)
+  }, [defaultData])
+
   useEffect(() => {
     if (searchTab === 'scenicSpot') {
       setBannerImg('/src/assets/images/photoScenicSpot.jpg')
@@ -75,7 +113,7 @@ export default function Home() {
         </div>
       </div>
       <Routes>
-        <Route path='' element={<Index handleSetSearchTab={handleSetSearchTab} />} />
+        <Route path='' element={<Index defaultData={defaultData} handleSetSearchTab={handleSetSearchTab} />} />
         <Route path='search/hotel' element={<Hotels />} />
         <Route path='search/restaurant' element={<Restaurants />} />
         <Route path='search/scenicSpot' element={<ScenicSpots />} />

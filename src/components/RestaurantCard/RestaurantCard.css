@@ -1,4 +1,4 @@
-.restaurant .main {
+.restaurant.main {
   height: 176px;
   @apply overflow-hidden py-2;
 }
@@ -33,7 +33,7 @@
 }
 
 @screen lg {
-  .restaurant .main {
+  .restaurant.main {
     height: 207px;
     @apply mb-6;
   }

@@ -1,4 +1,4 @@
-.hotel .main {
+.hotel.main {
   height: 373px;
   width: 265px;
   @apply rounded-2xl overflow-hidden border border-j-black-100;
@@ -30,7 +30,7 @@
 }
 
 @screen lg {
-  .hotel .main {
+  .hotel.main {
     width: 300px;
   }
   .hotel .imgArea {
