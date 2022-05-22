@@ -27,7 +27,7 @@ export const imgSrc = (src) => {
         img.onerror = () => setErrorImg(imgRef)
       }
 
-      if (!src) {
+      if (!src && imgRef) {
         setErrorImg(imgRef)
       }
     }
@@ -48,7 +48,7 @@ export const bgImgSrc = (src) => {
       img.onerror = () => setErrorBgImg(imgRef)
     }
 
-    if (!src) {
+    if (!src && imgRef) {
       setErrorBgImg(imgRef)
     }
   }, [])

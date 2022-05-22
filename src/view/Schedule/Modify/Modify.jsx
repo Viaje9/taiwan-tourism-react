@@ -7,12 +7,14 @@ import { updateScheduleName, updateSchedule, removeFavorite } from '/src/store/a
 import { getItemsId, getID } from '/src/utils/apiParams'
 import { fetchAll } from '/src/apis/tourism'
 import { filterArea } from '/src/utils/filter'
+import { useNavigate } from 'react-router-dom'
 import { imgSrc } from '/src/utils/onErrorImg'
 import Dialogs from '/src/components/Dialogs/Dialogs'
 
 export default function Modify() {
   const index = +useParams().index
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const scheduleItems = useSelector(selectScheduleItems(index))
   const favoriteItems = useSelector(selectFavoriteItems)
   const [showDialogs, setShowDialogs] = useState(false)
@@ -342,7 +344,7 @@ export default function Modify() {
                 ))}
             </ul>
             <div className='flex justify-end pb-5 lg:hidden'>
-              <button className='back' onClick={() => $router.push('/ItineraryList')}>
+              <button className='back' onClick={() => navigate('/ItineraryList')}>
                 返回
               </button>
             </div>
@@ -373,7 +375,10 @@ export default function Modify() {
         <ul className='favorite_cards'>
           {favoriteDetailItems.map((item) => (
             <li key={item.id} className='favorite_card' onClick={() => addScheduleItem(item)}>
-              <div className='absolute top-2 right-2 z-10' onClick={() => openDialogs('favoriteItem', item)}>
+              <div className='absolute top-2 right-2 z-10' onClick={(e) => {
+                openDialogs('favoriteItem', item)
+                e.stopPropagation()
+              }}>
                 <img className='w-6 h-6' src='/src/assets/images/itemClose.svg' />
               </div>
               <div className='aspect-w-3 aspect-h-2'>
@@ -390,12 +395,11 @@ export default function Modify() {
           ))}
         </ul>
       </div>
-      <div className='go_top'>TOP</div>
+      {/* <div className='go_top'>TOP</div> */}
       {showDialogs ? (
         <Dialogs
           type={dialogsConfig.str}
           doDelete={(status) => {
-            console.log(status)
             clickDialogs(status)
           }}
         />

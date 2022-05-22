@@ -1,6 +1,9 @@
 import './ScenicSpots.css'
-// TODO: Jane
+import { selectSearchData } from '/src/store/app/selector'
+import { useSelector } from 'react-redux'
+import ScenicSpotCard from '/src/components/ScenicSpotCard/ScenicSpotCard'
 export default function ScenicSpots() {
+  const items = useSelector(selectSearchData)
   return (
     <div className='contentWrapper'>
       <div className='scenicSpotArea w-full overflow-hidden z-10'>
@@ -9,12 +12,9 @@ export default function ScenicSpots() {
           <span className='subtitle'> 台灣最夯、最美麗的景點都在這裡 </span>
         </p>
         <div className='cardGroup lg:justify-center'>
-          {/* {itmes.map((data) =>
-            <ScenicSpotCard
-              cardData={data}
-              key={data.ID}
-            />)
-          } */}
+          {items.map((data) => (
+            <ScenicSpotCard cardData={data} key={data.ScenicSpotID} />
+          ))}
         </div>
       </div>
     </div>

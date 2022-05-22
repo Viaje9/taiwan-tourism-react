@@ -1,6 +1,9 @@
 import './Hotels.css'
-// TODO: Jane
+import { selectSearchData } from '/src/store/app/selector'
+import { useSelector } from 'react-redux'
+import HotelCard from '/src/components/HotelCard/HotelCard'
 export default function Hotels() {
+  const items = useSelector(selectSearchData)
   return (
     <div id='Hotels'>
       <div className='contentWrapper'>
@@ -12,12 +15,9 @@ export default function Hotels() {
             </p>
           </div>
           <div className='cardGroup'>
-            {/* {itmes.map((data) => 
-          <HotelCard
-            cardData={data}
-            key={data.ID}
-          />)
-          } */}
+            {items.map((data) => (
+              <HotelCard cardData={data} key={data.HotelID} />
+            ))}
           </div>
         </div>
       </div>

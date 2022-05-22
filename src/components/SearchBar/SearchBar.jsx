@@ -28,8 +28,6 @@ export default function SearchBar({ tab, handleSetSearchTab }) {
     keyword: ''
   })
 
-  const searchData = useSelector(selectSearchData)
-
   useEffect(() => {
     changeTab(tab)
   }, [tab])
@@ -108,6 +106,7 @@ export default function SearchBar({ tab, handleSetSearchTab }) {
         //   e.City = e.City || filterCity(e.ZipCode) || e.Address.slice(0, 3)
         //   return e
         // })
+        console.log(items);
         dispatch(setSearchData(items))
       })
       .finally(() => {

@@ -1,6 +1,9 @@
 import './Restaurants.css'
-// TODO: Jane
+import { selectSearchData } from '/src/store/app/selector'
+import { useSelector } from 'react-redux'
+import RestaurantCard from '/src/components/RestaurantCard/RestaurantCard'
 export default function Restaurants() {
+  const items = useSelector(selectSearchData)
   return (
     <div className='contentWrapper'>
       <div className='restaurantArea w-full'>
@@ -10,13 +13,9 @@ export default function Restaurants() {
           </p>
         </div>
         <div className='restaurantCardGroup'>
-          {/* {itmes.map((data) =>
-                        <RestaurantCard
-                            cardData={data}
-                            key={data.ID}
-                            className="underLine"
-                        />)
-                    } */}
+          {items.map((data) => (
+            <RestaurantCard cardData={data} key={data.RestaurantID} className='underLine' />
+          ))}
         </div>
       </div>
     </div>
