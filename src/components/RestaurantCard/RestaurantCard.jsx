@@ -20,7 +20,12 @@ export default function RestaurantCard({ cardData }) {
   }
 
   return (
-    <div className='restaurant main flex' onClick={() => {navigate(`restaurants/${cardData.RestaurantID}`)}}>
+    <div
+      className='restaurant main flex'
+      onClick={() => {
+        navigate(`/restaurants/${cardData.RestaurantID}`)
+      }}
+    >
       <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.RestaurantName}</h4>
@@ -37,7 +42,12 @@ export default function RestaurantCard({ cardData }) {
             </div>
             <span>{cardData.City}</span>
           </div>
-          <div onClick={() => clickAddFavorite()}>
+          <div
+            onClick={(e) => {
+              clickAddFavorite()
+              e.stopPropagation()
+            }}
+          >
             <div className='icon cursor-pointer'>
               {isFavorite ? (
                 <img src='/src/assets/images/addedJourney.svg' />

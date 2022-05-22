@@ -2,86 +2,86 @@
 .title {
   @apply text-3xl font-bold text-j-black-900;
 }
-.Detail .wrap {
+#Detail .wrap {
   @apply flex flex-col;
 }
-.Detail .header {
+#Detail .header {
   @apply grid py-3 grid-cols-3 mx-5;
   grid-template-areas:
     'title title title'
     'location left_side left_side'
     'desc desc desc';
 }
-.Detail .header_title {
+#Detail .header_title {
   grid-area: title;
   @apply title;
 }
-.Detail.location {
+#Detail .location {
   grid-area: location;
 }
-.Detail .left_side {
+#Detail .left_side {
   grid-area: left_side;
   @apply flex justify-end;
 }
-.Detail .fast_search {
+#Detail .fast_search {
   @apply mr-2;
 }
-.Detail .favorite {
+#Detail .favorite {
   @apply justify-end;
 }
-.Detail .location > img {
+#Detail .location > img {
   @apply mr-3;
 }
-.Detail .favorite > img,
-.Detail .fast_search > img {
+#Detail .favorite > img,
+#Detail .fast_search > img {
   @apply mr-2;
 }
-.Detail .location > img,
-.Detail .favorite > img,
-.Detail .fast_search > img {
+#Detail .location > img,
+#Detail .favorite > img,
+#Detail .fast_search > img {
   @apply w-5;
 }
-.Detail .location,
-.Detail .favorite,
-.Detail .fast_search {
+#Detail .location,
+#Detail .favorite,
+#Detail .fast_search {
   @apply flex text-base py-2;
 }
-.Detail .desc {
+#Detail .desc {
   @apply text-j-black-500 tracking-wide leading-6;
   grid-area: desc;
 }
-.Detail .images {
+#Detail .images {
   @apply w-full grid grid-rows-3 grid-cols-3 gap-2 mb-10 px-5;
 }
-.Detail .main_img {
+#Detail .main_img {
   @apply row-span-3 col-span-3;
 }
-.Detail .side_img {
+#Detail .side_img {
   @apply col-span-1 aspect-w-8 aspect-h-5;
 }
-.Detail .img {
+#Detail .img {
   @apply w-full h-full object-center object-cover rounded-lg;
   aspect-ratio: 8 / 5;
 }
-.Detail .content {
+#Detail .content {
   @apply mx-5;
 }
-.Detail .content_title {
+#Detail .content_title {
   @apply title mb-2;
 }
-.Detail .content_subtitle {
+#Detail .content_subtitle {
   @apply text-j-blue-200 text-lg font-bold;
 }
-.Detail .content_desc {
+#Detail .content_desc {
   @apply text-j-black-900 leading-8 mb-10;
 }
-.Detail .info {
+#Detail .info {
   @apply bg-j-black-50 py-10;
 }
-.Detail .info_title {
+#Detail .info_title {
   @apply title mx-11 mb-3;
 }
-.Detail .info_title::before {
+#Detail .info_title::before {
   @apply bg-j-orange;
   position: relative;
   display: inline-block;
@@ -90,75 +90,75 @@
   width: 4px;
   height: 22px;
 }
-.Detail .info_item {
+#Detail .info_item {
   @apply mx-11 mb-3;
 }
-.Detail .info_label {
+#Detail .info_label {
   @apply text-j-black-500 text-sm;
 }
-.Detail .info_text {
+#Detail .info_text {
   @apply text-j-black-900 text-lg font-bold;
 }
-.Detail .info_map {
+#Detail .info_map {
   @apply px-5;
 }
 @screen lg {
-  .Detail .wrap {
+  #Detail .wrap {
     @apply items-center mx-auto;
     max-width: 1280px;
   }
-  .Detail .header {
+  #Detail .header {
     @apply mx-0 pt-3 pb-10 w-full;
     grid-template-columns: auto 1fr 144px;
     grid-template-areas:
       'title location left_side'
       'desc desc left_side';
   }
-  .Detail .header_title {
+  #Detail .header_title {
     @apply mr-11;
   }
-  .Detail .desc {
+  #Detail .desc {
     @apply w-9/12 pt-3;
   }
-  .Detail .left_side {
+  #Detail .left_side {
     white-space: nowrap;
   }
-  .Detail .fast_search {
+  #Detail .fast_search {
     @apply mr-4;
   }
-  .Detail .favorite > img,
-  .Detail .fast_search > img {
+  #Detail .favorite > img,
+  #Detail .fast_search > img {
     @apply w-10;
   }
-  .Detail .favorite,
-  .Detail .fast_search {
+  #Detail .favorite,
+  #Detail .fast_search {
     @apply flex-col justify-end items-center py-0;
   }
-  .Detail .images {
+  #Detail .images {
     @apply grid-cols-12 gap-5 px-0;
   }
-  .Detail .main_img {
+  #Detail .main_img {
     @apply col-span-9;
   }
-  .Detail .side_img {
+  #Detail .side_img {
     @apply col-span-3;
   }
-  .Detail .img {
+  #Detail .img {
     @apply rounded-2xl;
   }
-  .Detail .intro {
+  #Detail .intro {
     @apply grid py-3 grid-cols-12 gap-14;
   }
-  .Detail .content {
+  #Detail .content {
     @apply mx-0;
   }
-  .Detail .content_subtitle {
+  #Detail .content_subtitle {
     @apply mb-3 pt-2;
   }
-  .Detail .info {
+  #Detail .info {
     @apply pt-5 pb-10 rounded-2xl bg-white border border-j-black-100;
   }
-  .Detail .info_map {
+  #Detail .info_map {
     @apply px-10;
   }
 }

@@ -1,5 +1,5 @@
 import errorImg from '/src/assets/images/empty.svg'
-import { useCallback } from 'react'
+import { useCallback, useRef } from 'react'
 
 function setErrorImg(el) {
   el.src = errorImg
@@ -16,20 +16,18 @@ function setErrorBgImg(el) {
 
 export const imgSrc = (src) => {
   return useCallback((imgRef) => {
-    if (imgRef !== null) {
-      if (src) {
-        const img = new Image()
-        img.src = src
+    if (src && imgRef) {
+      const img = new Image()
+      img.src = src
 
-        img.onload = () => {
-          imgRef.src = src
-        }
-        img.onerror = () => setErrorImg(imgRef)
+      img.onload = () => {
+        imgRef.src = src
       }
+      img.onerror = () => setErrorImg(imgRef)
+    }
 
-      if (!src && imgRef) {
-        setErrorImg(imgRef)
-      }
+    if (!src && imgRef) {
+      setErrorImg(imgRef)
     }
   }, [])
 }

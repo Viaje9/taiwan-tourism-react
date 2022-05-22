@@ -45,7 +45,6 @@ export default function Modify() {
     const allParams = mixinParams(scheduleParams, favoriteItemsParams)
     fetchAll(allParams).then((e) => {
       const result = Object.entries(e).reduce((acc, [category, data]) => {
-        console.log(data)
         const list = data.map((e) => ({
           id: e[getID(category)],
           name: e[getName(category)],
@@ -170,7 +169,6 @@ export default function Modify() {
   function getFavoriteDetail(favoriteItems, detailItems) {
     return favoriteItems.map(({ id, category }) => {
       const detail = detailItems.find((e) => e.id === id && e.category === category)
-      console.log(detail)
       return {
         id,
         category,

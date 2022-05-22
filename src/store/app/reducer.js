@@ -36,7 +36,6 @@ export const AppReducer = createReducer(initialState, (builder) => {
       setItem('itineraryList', state.itineraryList)
     })
     .addCase(removeSchedule, (state, action) => {
-      console.log(state, action);
       const deleteIndex = action.payload
       const list = state.itineraryList.filter((e) => e.index !== deleteIndex)
       state.itineraryList = [...list]

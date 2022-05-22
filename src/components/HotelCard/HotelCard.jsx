@@ -20,7 +20,12 @@ export default function HotelCard({ cardData }) {
   }
 
   return (
-    <div className='main hotel' onClick={() => {navigate(`hotels/${cardData.HotelID}`)}}>
+    <div
+      className='main hotel'
+      onClick={() => {
+        navigate(`/hotels/${cardData.HotelID}`)
+      }}
+    >
       <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.HotelName}</h4>
@@ -37,7 +42,12 @@ export default function HotelCard({ cardData }) {
             </div>
             <span>{cardData.City}</span>
           </div>
-          <div onClick={() => clickAddFavorite()}>
+          <div
+            onClick={(e) => {
+              clickAddFavorite()
+              e.stopPropagation()
+            }}
+          >
             <div className='icon cursor-pointer'>
               {isFavorite ? (
                 <img src='/src/assets/images/addedJourney.svg' />

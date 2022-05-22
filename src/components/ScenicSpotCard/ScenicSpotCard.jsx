@@ -20,7 +20,12 @@ export default function ScenicSpotCard({ cardData }) {
   }
 
   return (
-    <div className='scenic-spot-card main' onClick={() => {navigate(`scenicSpots/${cardData.ScenicSpotID}`)}}>
+    <div
+      className='scenic-spot-card main'
+      onClick={() => {
+        navigate(`/scenicSpots/${cardData.ScenicSpotID}`)
+      }}
+    >
       <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.ScenicSpotName}</h4>
@@ -32,7 +37,12 @@ export default function ScenicSpotCard({ cardData }) {
             </div>
             <span>{cardData.City}</span>
           </div>
-          <div onClick={() => clickAddFavorite()}>
+          <div
+            onClick={(e) => {
+              clickAddFavorite()
+              e.stopPropagation()
+            }}
+          >
             <div className='icon cursor-pointer'>
               {isFavorite ? (
                 <img src='/src/assets/images/addedJourney.svg' />
