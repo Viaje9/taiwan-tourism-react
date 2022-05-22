@@ -1,0 +1,68 @@
+.home-index .contentWrapper {
+  @apply flex mx-auto px-4 mb-10 lg:px-8 relative;
+}
+.home-index .title {
+  @apply text-2xl font-bold text-j-black-900 lg:text-4xl;
+}
+.home-index .title::before {
+  content: '';
+  @apply relative inline-block bg-j-orange w-1 h-5 mr-5;
+}
+.home-index .cardGroup {
+  display: -webkit-box;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  @apply overflow-x-scroll lg:overflow-hidden lg:flex;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.home-index .cardGroup::-webkit-scrollbar {
+  display: none;
+}
+.home-index .cardGroup > div {
+  @apply mr-9;
+}
+.home-index .cardGroup div:last-child {
+  @apply mr-0;
+}
+.home-index .cardBg {
+  height: 260px;
+  @apply z-0 absolute bg-j-blue-100 w-full transform -translate-x-4 translate-y-44;
+}
+.home-index .more_btn {
+  @apply w-20 h-10 bg-j-black-900 leading-10 text-white text-xl rounded-3xl text-center cursor-pointer;
+}
+.home-index .white_btn {
+  @apply bg-white text-j-black-900 border border-j-black-900;
+}
+.home-index .underLine {
+  @apply border-b lg:border-none;
+}
+.home-index .underLine:last-child {
+  @apply border-none;
+}
+@screen lg {
+  .home-index .contentWrapper {
+    max-width: 1440px;
+    @apply px-20;
+  }
+  .home-index .title > span {
+    @apply text-lg text-j-black-500 font-medium align-middle leading-5;
+  }
+  .home-index .scenicSpotArea {
+    @apply px-10 mt-24;
+  }
+  .home-index .scenicSpotArea > .title::before {
+    content: '';
+    @apply absolute bg-j-orange w-1.5 h-7 transform translate-x-40 translate-y-1;
+  }
+  .home-index .cardBg {
+    height: 320px;
+    @apply rounded-2xl mt-24 max-w-7xl left-1/2 -translate-x-1/2;
+  }
+  .home-index .restaurantCardGroup {
+    @apply w-full flex flex-wrap;
+  }
+  .home-index .restaurantCardGroup > .main {
+    @apply w-1/2;
+  }
+}

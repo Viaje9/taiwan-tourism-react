@@ -9,7 +9,7 @@ import { setSearchData } from '/src/store/app/action'
 
 import './SearchBar.css'
 
-export default function SearchBar() {
+export default function SearchBar({ tab, handleSetSearchTab }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -29,6 +29,10 @@ export default function SearchBar() {
   })
 
   const searchData = useSelector(selectSearchData)
+
+  useEffect(() => {
+    changeTab(tab)
+  }, [tab])
 
   const apiParams = () => {
     const { city, category, keyword } = searchParams
@@ -90,7 +94,7 @@ export default function SearchBar() {
       category: '全部',
       keyword: ''
     })
-    // this.$emit('update:tab', tab)
+    handleSetSearchTab(tab)
   }
 
   const search = () => {

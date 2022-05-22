@@ -46,7 +46,7 @@ export default function NavBar() {
               <ul className='menu_list'>
                 <li className='search_btn'>
                   <NavLink
-                    to='/scenicSpots'
+                    to='search/scenicSpot'
                     onClick={() => {
                       setIsOpen(false)
                     }}
@@ -56,7 +56,7 @@ export default function NavBar() {
                 </li>
                 <li className='search_btn'>
                   <NavLink
-                    to='/hotels'
+                    to='search/hotel'
                     onClick={() => {
                       setIsOpen(false)
                     }}
@@ -66,7 +66,7 @@ export default function NavBar() {
                 </li>
                 <li className='search_btn'>
                   <NavLink
-                    to='/restaurants'
+                    to='search/restaurant'
                     onClick={() => {
                       setIsOpen(false)
                     }}

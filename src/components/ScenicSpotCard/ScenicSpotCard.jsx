@@ -1,41 +1,43 @@
-import './ScenicSpotCard.css';
-export default function ScenicSpotCard({ cardData }) {
+import './ScenicSpotCard.css'
+import { bgImgSrc } from '/src/utils/onErrorImg'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectIsFavorite } from '/src/store/app/selector'
+import { addFavorite, removeFavorite } from '/src/store/app/action'
+import { SCENIC_SPOT } from '/src/constant'
 
+export default function ScenicSpotCard({ cardData }) {
+  const dispatch = useDispatch()
+  const isFavorite = useSelector(selectIsFavorite(SCENIC_SPOT, cardData.ScenicSpotID))
   const clickAddFavorite = () => {
-    this.isFavorite = !this.isFavorite
+    const target = {
+      id: cardData.ScenicSpotID,
+      category: SCENIC_SPOT
+    }
+    dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
   }
 
   return (
-    <div>
-      <div className="main">
-        <div
-          className="imgArea"
-          v-bg-src="cardData.Picture.PictureUrl1"
-        ></div>
-        <div className="textArea">
-          <h4 className="card_title">{cardData.Name}</h4>
-          <div className="flex mt-4 xl:mt-3">
-            <div className="icon">
-              <img src="/src/assets/images/phone.svg" />
+    <div className='scenic-spot-card main'>
+      <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
+      <div className='textArea'>
+        <h4 className='card_title'>{cardData.ScenicSpotName}</h4>
+        <p className='card_info'>{cardData.DescriptionDetail}</p>
+        <div className='card_footer'>
+          <div>
+            <div className='icon'>
+              <img src='/src/assets/images/map.svg' />
             </div>
-            <span>{cardData.Phone}</span>
+            <span>{cardData.City}</span>
           </div>
-          <div className="card_footer">
-            <div>
-              <div className="icon">
-                <img src="/src/assets/images/map.svg" />
-              </div>
-              <span>{cardData.City}</span>
+          <div onClick={() => clickAddFavorite()}>
+            <div className='icon cursor-pointer'>
+              {isFavorite ? (
+                <img src='/src/assets/images/addedJourney.svg' />
+              ) : (
+                <img src='/src/assets/images/addJourney.svg' />
+              )}
             </div>
-            <div onClick={() => clickAddFavorite()}>
-              <div className="icon cursor-pointer">
-                {isFavorite ?
-                  <img src="/src/assets/images/addedJourney.svg" /> :
-                  <img src="/src/assets/images/addJourney.svg" />
-                }
-              </div>
-              <span>加入收藏</span>
-            </div>
+            <span className='cursor-pointer'>加入收藏</span>
           </div>
         </div>
       </div>
