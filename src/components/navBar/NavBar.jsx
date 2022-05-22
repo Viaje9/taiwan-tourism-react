@@ -9,10 +9,6 @@ export default function NavBar() {
   const [menuIcon, setMenuIcon] = useState('menu')
   const isSmallerLg = useSelector(selectIsSmaller('lg'))
 
-  const showMenuList = () => {
-    return !isSmallerLg || (isSmallerLg && isOpen)
-  }
-
   useEffect(() => {
     setMenuIcon(isOpen ? 'menuClose' : 'menu')
   }, [isOpen])
@@ -41,7 +37,7 @@ export default function NavBar() {
               <img className='h-5' src={`/src/assets/images/${menuIcon}.svg`} />
             </button>
           </div>
-          {showMenuList() ? (
+          {!isSmallerLg || (isSmallerLg && isOpen) ? (
             <div className='flex lg:w-auto w-full justify-center'>
               <ul className='menu_list'>
                 <li className='search_btn'>

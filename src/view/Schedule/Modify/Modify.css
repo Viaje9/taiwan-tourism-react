@@ -1,100 +1,100 @@
 
-.Modify .schedule {
+#Modify .schedule {
   @apply bg-j-black-25 pb-5;
 }
-.Modify .schedule_name {
+#Modify .schedule_name {
   @apply w-full p-5;
 }
-.Modify .page_itme {
+#Modify .page_itme {
   @apply w-15 h-10 mr-px;
 }
-.Modify .page_btn {
+#Modify .page_btn {
   @apply bg-j-black-200 border-j-black-100 border-t border-l border-r text-xl rounded-t-lg w-full h-full grid justify-center items-center;
 }
-.Modify .page_btn.active {
+#Modify .page_btn.active {
   @apply bg-j-black-75;
 }
-.Modify .items {
+#Modify .items {
   @apply bg-j-black-75 mx-0.5 border-j-black-100 border-l border-r border-b  rounded-xl px-5;
 }
-.Modify .item {
+#Modify .item {
   @apply flex max-w-full mb-1;
 }
-.Modify .time_area {
+#Modify .time_area {
   @apply w-17 min-w-min flex flex-col justify-center;
 }
-.Modify .time {
+#Modify .time {
   @apply flex bg-white justify-center items-center border border-j-black-100 rounded;
 }
-.Modify .input_num {
+#Modify .input_num {
   @apply w-5 h-9;
 }
-.Modify .info {
+#Modify .info {
   @apply flex flex-1 h-25 bg-white ml-2.5 p-2.5 relative;
 }
-.Modify .img {
+#Modify .img {
   @apply w-full h-full object-center object-cover;
 }
-.Modify .content {
+#Modify .content {
   @apply pb-3;
 }
-.Modify .back {
+#Modify .back {
   @apply px-5 py-2 border border-j-black-900 rounded-full text-xl;
 }
-.Modify .favorite_area {
+#Modify .favorite_area {
   @apply p-5;
 }
-.Modify .favorite_cards {
+#Modify .favorite_cards {
   @apply grid grid-flow-row-dense grid-cols-2;
 }
-.Modify .favorite_card {
+#Modify .favorite_card {
   @apply w-40 mb-3 relative justify-self-center;
 }
-.Modify .favorite_info {
+#Modify .favorite_info {
   @apply px-2 pt-2 pb-3 border-r border-l border-b rounded-b-2xl;
 }
-.Modify .favorite_name {
+#Modify .favorite_name {
   @apply text-sm font-bold pb-1;
 }
-.Modify .favorite_location {
+#Modify .favorite_location {
   @apply flex text-xs text-j-black-500;
 }
-.Modify .go_top {
+#Modify .go_top {
   @apply fixed left-5 bottom-5 z-20 w-15 h-15 rounded-full flex justify-center items-center text-white;
   background: #00000059 0% 0% no-repeat padding-box;
 }
-.Modify .filter_area {
+#Modify .filter_area {
   @apply hidden;
 }
 @screen lg {
-  .Modify .wrap {
+  #Modify .wrap {
     @apply grid grid-cols-3 mx-10 mb-10;
   }
-  .Modify .schedule {
+  #Modify .schedule {
     @apply col-span-1 px-10 py-5;
   }
-  .Modify .schedule_name {
+  #Modify .schedule_name {
     @apply px-0;
   }
-  .Modify .favorite_area {
+  #Modify .favorite_area {
     @apply col-span-2 pr-0 pt-0;
   }
-  .Modify .filter_area {
+  #Modify .filter_area {
     @apply flex mb-6;
   }
-  .Modify .filter_item {
+  #Modify .filter_item {
     @apply w-40 mr-5;
   }
-  .Modify .filter_select {
+  #Modify .filter_select {
     @apply w-full py-2 px-3 border border-j-black-100 rounded-lg;
   }
-  .Modify .favorite_cards {
+  #Modify .favorite_cards {
     @apply grid-cols-5;
   }
-  .Modify .favorite_card {
+  #Modify .favorite_card {
     @apply justify-self-start;
   }
-  .Modify .go_top {
+  #Modify .go_top {
     @apply hidden;
   }
 }

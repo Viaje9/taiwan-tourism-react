@@ -46,3 +46,16 @@ export function getID(category) {
       ''
   }
 }
+
+export function getName(category) {
+  switch (category) {
+    case HOTEL:
+      return 'HotelName'
+    case RESTAURANT:
+      return 'RestaurantName'
+    case SCENIC_SPOT:
+      return 'ScenicSpotName'
+    default:
+      ''
+  }
+}
