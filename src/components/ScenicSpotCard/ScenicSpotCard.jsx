@@ -18,10 +18,7 @@ export default function ScenicSpotCard({ cardData }) {
 
   return (
     <div className='scenic-spot-card main'>
-      <div
-        className='imgArea'
-        ref={bgImgSrc(cardData.Picture.PictureUrl1)}
-      ></div>
+      <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.ScenicSpotName}</h4>
         <p className='card_info'>{cardData.DescriptionDetail}</p>
@@ -40,7 +37,7 @@ export default function ScenicSpotCard({ cardData }) {
                 <img src='/src/assets/images/addJourney.svg' />
               )}
             </div>
-            <span>加入收藏</span>
+            <span className='cursor-pointer'>加入收藏</span>
           </div>
         </div>
       </div>

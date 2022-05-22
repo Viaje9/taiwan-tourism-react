@@ -18,10 +18,7 @@ export default function RestaurantCard({ cardData }) {
 
   return (
     <div className='restaurant main flex'>
-      <div
-        className='imgArea'
-        ref={bgImgSrc(cardData.Picture.PictureUrl1)}
-      ></div>
+      <div className='imgArea' ref={bgImgSrc(cardData.Picture.PictureUrl1)}></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.RestaurantName}</h4>
         <div className='flex mt-4 xl:mt-3'>
@@ -45,7 +42,7 @@ export default function RestaurantCard({ cardData }) {
                 <img src='/src/assets/images/addJourney.svg' />
               )}
             </div>
-            <span>加入收藏</span>
+            <span className='cursor-pointer'>加入收藏</span>
           </div>
         </div>
       </div>
