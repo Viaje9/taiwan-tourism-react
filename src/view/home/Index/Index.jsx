@@ -4,7 +4,7 @@ import ScenicSpotCard from '/src/components/ScenicSpotCard/ScenicSpotCard'
 import HotelCard from '/src/components/HotelCard/HotelCard'
 import RestaurantCard from '/src/components/RestaurantCard/RestaurantCard'
 import { useNavigate } from 'react-router-dom'
-export default function Index() {
+export default function Index({ handleSetSearchTab }) {
   const navigate = useNavigate()
 
   const [defaultData, setDefaultData] = useState({
@@ -118,8 +118,8 @@ export default function Index() {
   })
 
   const handleToSearch = (type) => {
-    console.log(type)
     navigate(`search/${type}`)
+    handleSetSearchTab(type)
   }
 
   return (

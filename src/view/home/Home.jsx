@@ -5,6 +5,12 @@ import { Outlet } from 'react-router-dom'
 import { selectSearchData } from '/src/store/app/selector'
 import { useSelector, useDispatch, useStore } from 'react-redux'
 import SearchBar from '/src/components/SearchBar/SearchBar'
+import { Route, Routes } from 'react-router-dom'
+import { lazy } from 'react'
+const Index = lazy(() => import('/src/view/Home/Index'))
+const Hotels = lazy(() => import('/src/view/Hotel/Hotels/Hotels'))
+const Restaurants = lazy(() => import('/src/view/Restaurant/Restaurants/Restaurants'))
+const ScenicSpots = lazy(() => import('/src/view/ScenicSpot/ScenicSpots/ScenicSpots'))
 
 export default function Home() {
   const id = 'C1_315080500H_000073'
@@ -12,7 +18,7 @@ export default function Home() {
     // fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then((res) => {
     //   console.log(res)
     // })
-  },[])
+  }, [])
   const bannerInfo = {
     scenicSpot: {
       title: '景點快搜',
@@ -42,6 +48,11 @@ export default function Home() {
       setBannerImg('/src/assets/images/photoRestaurant.jpg')
     }
   }, [searchTab])
+
+  const handleSetSearchTab = (tab) => {
+    setSearchTab(tab)
+  }
+
   return (
     <div className='home'>
       <div className={(searchData.length ? 'lessBanner' : '') + ' wrapper justify-end'}>
@@ -59,11 +70,16 @@ export default function Home() {
             <p className='banner_subtitle'>{bannerInfo[searchTab].subTitle}</p>
           </div>
           <div className='searchBar'>
-            <SearchBar tab={searchTab} setSearchTab={setSearchTab} />
+            <SearchBar tab={searchTab} handleSetSearchTab={handleSetSearchTab} />
           </div>
         </div>
       </div>
-      <Outlet />
+      <Routes>
+        <Route path='' element={<Index handleSetSearchTab={handleSetSearchTab} />} />
+        <Route path='search/hotel' element={<Hotels />} />
+        <Route path='search/restaurant' element={<Restaurants />} />
+        <Route path='search/scenicSpot' element={<ScenicSpots />} />
+      </Routes>
     </div>
   )
 }
