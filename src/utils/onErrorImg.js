@@ -36,7 +36,7 @@ export const imgSrc = (src) => {
 
 export const bgImgSrc = (src) => {
   return useCallback((imgRef) => {
-    if (src) {
+    if (src && imgRef) {
       const img = new Image()
       img.src = src
 

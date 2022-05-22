@@ -10,6 +10,7 @@ const HotelDetail = lazy(() => import('../view/Hotel/HotelDetail/HotelDetail'))
 const RestaurantDetail = lazy(() => import('../view/Restaurant/RestaurantDetail/RestaurantDetail'))
 const ScenicSpotDetail = lazy(() => import('../view/ScenicSpot/ScenicSpotDetail/ScenicSpotDetail'))
 const ItineraryList = lazy(() => import('../view/ItineraryList/ItineraryList'))
+const ScheduleModify = lazy(() => import('../view/Schedule/Modify/Modify'))
 export default function TourismRouter() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -24,6 +25,7 @@ export default function TourismRouter() {
         <Route path='restaurants/:id' element={<RestaurantDetail />} />
         <Route path='scenicSpots/:id' element={<ScenicSpotDetail />} />
         <Route path='itineraryList' element={<ItineraryList />} />
+        <Route path='Schedule/Modify/:index' element={<ScheduleModify />} />
       </Routes>
     </Suspense>
   )

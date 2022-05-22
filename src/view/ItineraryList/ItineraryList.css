@@ -1,21 +1,20 @@
-
-.wrap {
+#ItineraryList .wrap {
   @apply mx-5;
 }
-.item {
+#ItineraryList .item {
   @apply w-40 h-40 mb-2 border border-j-black-100 rounded-2xl mx-auto relative;
 }
-.title {
+#ItineraryList .title {
   @apply px-2.5 text-xl py-1;
 }
 @screen lg {
-  .wrap {
+  #ItineraryList .wrap {
     @apply mx-20;
   }
-  .item {
+  #ItineraryList .item {
     @apply w-60 h-60 mr-4 mx-0 mb-4;
   }
-  .title {
+  #ItineraryList .title {
     @apply pt-2.5;
   }
 }

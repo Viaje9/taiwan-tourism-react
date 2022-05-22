@@ -38,9 +38,6 @@ export default function Home() {
   })
 
   useEffect(() => {
-    // fetchScenicSpotAll({ $top: 30, $filter: `ScenicSpotID eq '${id}'` }).then((res) => {
-    //   console.log(res)
-    // })
 
     fetchScenicSpotAll({
       $filter: `City eq '雲林縣' and Picture/PictureUrl3 ne null`,

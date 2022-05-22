@@ -1,62 +1,126 @@
-import Dialogs from '/src/components/Dialogs/Dialogs';
-import './ItineraryList.css';
+import Dialogs from '/src/components/Dialogs/Dialogs'
+import { fetchAll } from '/src/apis/tourism'
+import { useState, useEffect } from 'react'
+import { getItineraryListId, getID } from '/src/utils/apiParams'
+import { useSelector, useDispatch, useStore } from 'react-redux'
+import { selectItineraryList } from '/src/store/app/selector'
+import { useNavigate } from 'react-router-dom'
+import { addSchedule, removeSchedule } from '/src/store/app/action'
+import empty from '/src/assets/images/empty.svg'
+import './ItineraryList.css'
 
 export default function ItineraryList() {
-  const addSchedule = () => {
-    const last = itineraryList.value[lastScheduleIndex.value]
-    if (last?.schedule.length || lastScheduleIndex.value < 0) {
-      store.commit('addSchedule')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const store = useStore()
+  const itineraryList = useSelector(selectItineraryList)
+  const [list, setList] = useState([])
+  const [showDialogs, setShowDialogs] = useState(false)
+  const [deleteIndex, setDeleteIndex] = useState(null)
+
+  const addNewSchedule = () => {
+    const lastScheduleIndex = itineraryList.length - 1
+    const last = itineraryList[lastScheduleIndex]
+    if (last?.schedule.length || lastScheduleIndex < 0) {
+      dispatch(addSchedule())
     }
-    const { index } = itineraryList.value[lastScheduleIndex.value]
-    router.push(`/Schedule/Modify/${index}`)
+    const newItineraryList = store.getState().app.itineraryList
+    const { index } = newItineraryList[newItineraryList.length - 1]
+    navigate(`/Schedule/Modify/${index}`)
   }
 
-  const setDeleteIndex = (index) => {
-    deleteIndex.value = index
-    showDialogs.value = true
+  const clickDeleteIndex = (index) => {
+    setDeleteIndex(index)
+    setShowDialogs(true)
   }
 
   const clickDialogs = (result) => {
     if (result) deleteSchedule()
-    showDialogs.value = false
+    setShowDialogs(false)
   }
 
   const deleteSchedule = () => {
-    list.value = list.value.filter(({ index }) => index !== deleteIndex.value)
-    store.commit('removeSchedule', deleteIndex.value)
+    setList(list.filter(({ index }) => index !== deleteIndex))
+    dispatch(removeSchedule(deleteIndex))
   }
-  
+
+  useEffect(() => {
+    const params = getItineraryListId(itineraryList)
+    fetchAll(params).then((e) => {
+      const result = Object.entries(e).reduce((acc, [category, data]) => {
+        const list = data.map((e) => ({
+          id: e[getID(category)],
+          picture: e.Picture?.PictureUrl1,
+          category
+        }))
+        return acc.concat(list)
+      }, [])
+      setList(
+        itineraryList.map(({ name, schedule, index }) => {
+          let picture = schedule.length ? null : empty
+          if (schedule.length) {
+            const { id, category } = schedule[0]
+            picture = result.find((e) => e.id === id && e.category === category)?.picture || empty
+          }
+          return {
+            index,
+            name,
+            picture
+          }
+        })
+      )
+    })
+  }, [])
+
   return (
-    <div className="wrap">
-      <ul className="flex flex-wrap">
-        <li
-          className="item"
-          v-for="item in list"
-          key={item.index}
-        // onClick="$router.push(`/Schedule/Modify/${item.index}`)"
-        >
-          <div
-            className="absolute top-2 right-2 z-10"
-            onClick={() => setDeleteIndex(item.index)}
+    <div id='ItineraryList'>
+      <div className='wrap'>
+        <ul className='flex flex-wrap'>
+          {list.map((item) => (
+            <li
+              className='item'
+              key={item.index}
+              onClick={() => {
+                navigate(`/Schedule/Modify/${item.index}`)
+              }}
+            >
+              <div
+                className='absolute top-2 right-2 z-10'
+                onClick={(e) => {
+                  clickDeleteIndex(item.index)
+                  e.stopPropagation()
+                }}
+              >
+                <img className='w-6 h-6' src='/src/assets/images/itemClose.svg' />
+              </div>
+              <div className='m-2.5 aspect-w-3 aspect-h-2'>
+                <img className='w-full h-full object-center object-cover rounded-t-xl' src={item.picture} />
+              </div>
+              <div className='title'>{item.name}</div>
+            </li>
+          ))}
+
+          <li
+            className='item p-1'
+            onClick={() => {
+              addNewSchedule()
+            }}
           >
-            <img className="w-6 h-6" src="@/assets/images/itemClose.svg" />
-          </div>
-          <div className="m-2.5 aspect-w-3 aspect-h-2">
             <img
-              className="w-full h-full object-center object-cover rounded-t-xl"
-              src={item.picture}
+              className='w-full h-full object-center object-cover rounded-t-xl'
+              src='/src/assets/images/addJourneyName.svg'
             />
-          </div>
-          <div className="title">{item.name}</div>
-        </li>
-        <li className="item p-1" onClick={() => { addSchedule() }}>
-          <img
-            className="w-full h-full object-center object-cover rounded-t-xl"
-            src="@/assets/images/addJourneyName.svg"
+          </li>
+        </ul>
+        {showDialogs && (
+          <Dialogs
+            type='清單'
+            doDelete={(status) => {
+              clickDialogs(status)
+            }}
           />
-        </li>
-      </ul>
-      {/* {showDialogs && <Dialogs  type="清單" @result="clickDialogs" />} */}
+        )}
+      </div>
     </div>
   )
 }

@@ -2,21 +2,21 @@
 .dialogs {
   @apply fixed top-0 left-0 z-50 w-screen h-screen flex justify-center items-center bg-black bg-opacity-75;
 }
-.card {
+.dialogs .card {
   @apply text-lg w-72 h-36 bg-white rounded-2xl flex flex-col justify-center items-center;
 }
-.content {
+.dialogs .content {
   @apply font-bold;
 }
-.btn_area {
+.dialogs .btn_area {
   @apply flex mt-4;
 }
-.btn {
+.dialogs .btn {
   @apply border rounded-full py-1 px-4;
 }
 
 @screen lg {
-  .card {
+  .dialogs .card {
     @apply w-96 h-48;
   }
 }
