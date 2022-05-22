@@ -7,7 +7,6 @@
 
 .scenic-spot-card .imgArea {
   @apply w-full h-1/2 bg-cover bg-center z-20;
-  background-image: url('~@/assets/images/photoScenicSpot.jpg');
 }
 
 .scenic-spot-card .textArea {

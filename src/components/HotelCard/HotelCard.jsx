@@ -1,33 +1,26 @@
 import './HotelCard.css'
 import { bgImgSrc } from '/src/utils/onErrorImg'
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch, useStore } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectIsFavorite } from '/src/store/app/selector'
 import { addFavorite, removeFavorite } from '/src/store/app/action'
 import { HOTEL } from '/src/constant'
 
 export default function HotelCard({ cardData }) {
-  // const dispatch = useDispatch()
-  // const isFavorite = useSelector(selectIsFavorite(HOTEL, cardData.HotelID))
-  // const clickAddFavorite = () => {
-  //   const target = {
-  //     id: cardData.HotelID,
-  //     category: HOTEL
-  //   }
-  //   dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
-  // }
-  const [isFavorite, setIsFavorite] = useState(false)
+  const dispatch = useDispatch()
+  const isFavorite = useSelector(selectIsFavorite(HOTEL, cardData.HotelID))
   const clickAddFavorite = () => {
-    this.isFavorite = !this.isFavorite
+    const target = {
+      id: cardData.HotelID,
+      category: HOTEL
+    }
+    dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
   }
 
   return (
     <div className='main hotel'>
       <div
         className='imgArea'
-        style={{
-          backgroundImage: `url(${cardData.Picture.PictureUrl1})`
-        }}
+        ref={bgImgSrc(cardData.Picture.PictureUrl1)}
       ></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.HotelName}</h4>

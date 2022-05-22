@@ -1,18 +1,26 @@
 import './ScenicSpotCard.css'
-import { useState } from 'react'
+import { bgImgSrc } from '/src/utils/onErrorImg'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectIsFavorite } from '/src/store/app/selector'
+import { addFavorite, removeFavorite } from '/src/store/app/action'
+import { SCENIC_SPOT } from '/src/constant'
+
 export default function ScenicSpotCard({ cardData }) {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const dispatch = useDispatch()
+  const isFavorite = useSelector(selectIsFavorite(SCENIC_SPOT, cardData.ScenicSpotID))
   const clickAddFavorite = () => {
-    this.isFavorite = !this.isFavorite
+    const target = {
+      id: cardData.ScenicSpotID,
+      category: SCENIC_SPOT
+    }
+    dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
   }
 
   return (
     <div className='scenic-spot-card main'>
       <div
         className='imgArea'
-        style={{
-          backgroundImage: `url(${cardData.Picture.PictureUrl1})`
-        }}
+        ref={bgImgSrc(cardData.Picture.PictureUrl1)}
       ></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.ScenicSpotName}</h4>

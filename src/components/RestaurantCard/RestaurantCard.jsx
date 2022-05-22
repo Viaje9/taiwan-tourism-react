@@ -1,19 +1,26 @@
 import './RestaurantCard.css'
-import { useState, useEffect } from 'react'
+import { bgImgSrc } from '/src/utils/onErrorImg'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectIsFavorite } from '/src/store/app/selector'
+import { addFavorite, removeFavorite } from '/src/store/app/action'
+import { RESTAURANT } from '/src/constant'
 
 export default function RestaurantCard({ cardData }) {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const dispatch = useDispatch()
+  const isFavorite = useSelector(selectIsFavorite(RESTAURANT, cardData.RestaurantID))
   const clickAddFavorite = () => {
-    this.isFavorite = !this.isFavorite
+    const target = {
+      id: cardData.RestaurantID,
+      category: RESTAURANT
+    }
+    dispatch(isFavorite ? removeFavorite(target) : addFavorite(target))
   }
 
   return (
     <div className='restaurant main flex'>
       <div
         className='imgArea'
-        style={{
-          backgroundImage: `url(${cardData.Picture.PictureUrl1})`
-        }}
+        ref={bgImgSrc(cardData.Picture.PictureUrl1)}
       ></div>
       <div className='textArea'>
         <h4 className='card_title'>{cardData.RestaurantName}</h4>

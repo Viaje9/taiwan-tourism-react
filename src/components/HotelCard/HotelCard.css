@@ -6,7 +6,6 @@
 
 .hotel .imgArea {
   @apply w-full h-3/5 bg-cover bg-center;
-  background-image: url('~@/assets/images/photoScenicSpot.jpg');
 }
 
 .hotel .textArea {

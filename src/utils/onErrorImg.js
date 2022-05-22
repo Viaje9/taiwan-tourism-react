@@ -38,7 +38,7 @@ export const bgImgSrc = (src) => {
   return useCallback((imgRef) => {
     if (src) {
       const img = new Image()
-      imgRef.src = src
+      img.src = src
 
       img.onload = () => {
         imgRef.style.backgroundImage = `url(${src})`
