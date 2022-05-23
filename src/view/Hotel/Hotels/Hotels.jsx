@@ -3,7 +3,8 @@ import { selectSearchData } from '/src/store/app/selector'
 import { useSelector } from 'react-redux'
 import HotelCard from '/src/components/HotelCard/HotelCard'
 export default function Hotels() {
-  const items = useSelector(selectSearchData)
+  const hotelList = useSelector(selectSearchData)
+
   return (
     <div id='Hotels'>
       <div className='contentWrapper'>
@@ -15,8 +16,8 @@ export default function Hotels() {
             </p>
           </div>
           <div className='cardGroup'>
-            {items.map((data) => (
-              <HotelCard cardData={data} key={data.HotelID} />
+            {hotelList.map((data, index) => (
+              <HotelCard cardData={data} key={`hotel_${index}`} />
             ))}
           </div>
         </div>
