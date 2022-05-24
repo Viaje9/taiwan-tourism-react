@@ -30,6 +30,17 @@
   }
   #NavBar .search_btn {
     @apply text-j-blue-300 mr-10 vertical-center mt-0 border-0;
+    position: relative;
+  }
+  #NavBar .search_btn a.active::after {
+    @apply bg-blue-300;
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 3px;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   #NavBar .itinerary_btn {
     @apply mt-0;

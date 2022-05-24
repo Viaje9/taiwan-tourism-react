@@ -109,7 +109,7 @@ export default function Detail({ detailID, info, category, categoryStr }) {
                     }!5e0!3m2!1sen!2szh-tw`}
                     className='w-full'
                     height='200'
-                    allowfullscreen=''
+                    allowFullScreen=''
                     loading='lazy'
                   ></iframe>
                 )}

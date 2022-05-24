@@ -1,4 +1,5 @@
 .scenic-spot-card.main {
+  cursor: pointer;
   height: 320px;
   width: 260px;
   box-shadow: 0px 3px 6px #00000029;

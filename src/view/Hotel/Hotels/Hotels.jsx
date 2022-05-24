@@ -2,8 +2,33 @@ import './Hotels.css'
 import { selectSearchData } from '/src/store/app/selector'
 import { useSelector } from 'react-redux'
 import HotelCard from '/src/components/HotelCard/HotelCard'
+import { useState, useEffect } from 'react'
+import { fetchHotelAll } from '/src/apis/tourism'
+
 export default function Hotels() {
-  const hotelList = useSelector(selectSearchData)
+  const hotelSearchResult = useSelector(selectSearchData)
+  const [hotelList, setHotelList] = useState([])
+  useEffect(() => {
+    if (hotelSearchResult.length > 0) {
+      setHotelList(hotelSearchResult)
+    } else {
+      defaultSearch()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (hotelList.length > 0) {
+      setHotelList(hotelSearchResult)
+    } else {
+      return
+    }
+  }, [hotelSearchResult])
+
+  const defaultSearch = () => {
+    fetchHotelAll({ $top: 30 }).then(({ data }) => {
+      setHotelList(data)
+    })
+  }
 
   return (
     <div id='Hotels'>
@@ -16,8 +41,8 @@ export default function Hotels() {
             </p>
           </div>
           <div className='cardGroup'>
-            {hotelList.map((data, index) => (
-              <HotelCard cardData={data} key={`hotel_${index}`} />
+            {hotelList.map((data) => (
+              <HotelCard cardData={data} key={data.HotelID} />
             ))}
           </div>
         </div>

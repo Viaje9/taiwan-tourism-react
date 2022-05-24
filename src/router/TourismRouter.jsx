@@ -16,7 +16,7 @@ export default function TourismRouter() {
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path='' element={<Home />}>
-          <Route path='' element={<Index />} />
+          <Route index element={<Index />} />
           <Route path='search/hotel' element={<Hotels />} />
           <Route path='search/restaurant' element={<Restaurants />} />
           <Route path='search/scenicSpot' element={<ScenicSpots />} />
@@ -26,7 +26,7 @@ export default function TourismRouter() {
         <Route path='scenicSpots/:id' element={<ScenicSpotDetail />} />
         <Route path='itineraryList' element={<ItineraryList />} />
         <Route path='Schedule/Modify/:index' element={<ScheduleModify />} />
-        <Route path='/*' element={<Home />}/>
+        <Route path='/*' element={<Home />} />
       </Routes>
     </Suspense>
   )

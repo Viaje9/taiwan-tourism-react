@@ -1,18 +1,12 @@
 import './Home.css'
 import { useState, useEffect } from 'react'
-import { fetchScenicSpotAll, fetchHotelAll, fetchRestaurantAll } from '/src/apis/tourism'
 import { selectSearchData } from '/src/store/app/selector'
 import { useSelector } from 'react-redux'
 import SearchBar from '/src/components/SearchBar/SearchBar'
-import { Route, Routes } from 'react-router-dom'
-import { lazy } from 'react'
-const Index = lazy(() => import('/src/view/Home/Index'))
-const Hotels = lazy(() => import('/src/view/Hotel/Hotels/Hotels'))
-const Restaurants = lazy(() => import('/src/view/Restaurant/Restaurants/Restaurants'))
-const ScenicSpots = lazy(() => import('/src/view/ScenicSpot/ScenicSpots/ScenicSpots'))
+import { Outlet } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 export default function Home() {
-  const id = 'C1_315080500H_000073'
   const bannerInfo = {
     scenicSpot: {
       title: '景點快搜',
@@ -30,43 +24,14 @@ export default function Home() {
   const searchData = useSelector(selectSearchData)
   const [searchTab, setSearchTab] = useState('scenicSpot')
   const [bannerImg, setBannerImg] = useState('/src/assets/images/photoScenicSpot.jpg')
-  const [defaultData, setDefaultData] = useState({
-    scenicSpot: [],
-    hotel: [],
-    restaurant: []
-  })
+  const pathname = useLocation().pathname.replace('/search/', '')
 
+  // 改變路由時同時改變 banner 與 searchTab
   useEffect(() => {
-
-    fetchScenicSpotAll({
-      $filter: `City eq '雲林縣' and Picture/PictureUrl3 ne null`,
-      $top: 3
-    }).then(({ data }) => {
-      const newDefault = defaultData
-      newDefault.scenicSpot = data
-      setDefaultData({ ...newDefault })
-    })
-
-    fetchHotelAll({
-      $filter: `City eq '臺北市' and Grade eq '五星級'`,
-      $top: 4
-    }).then(({ data }) => {
-      const newDefault = defaultData
-      newDefault.hotel = data
-      setDefaultData({ ...newDefault })
-    })
-
-    fetchRestaurantAll({
-      $filter: `City eq '彰化縣' and Picture/PictureUrl3 ne null and WebsiteUrl ne null`,
-      $top: 6
-    }).then(({ data }) => {
-      const newDefault = defaultData
-      newDefault.restaurant = data
-      setDefaultData({ ...newDefault })
-    })
-  }, [])
-
-  useEffect(() => {}, [defaultData])
+    if (pathname && pathname !== '/') {
+      handleSetSearchTab(pathname)
+    }
+  }, [pathname])
 
   useEffect(() => {
     if (searchTab === 'scenicSpot') {
@@ -105,12 +70,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Routes>
-        <Route path='' element={<Index defaultData={defaultData} handleSetSearchTab={handleSetSearchTab} />} />
-        <Route path='search/hotel' element={<Hotels />} />
-        <Route path='search/restaurant' element={<Restaurants />} />
-        <Route path='search/scenicSpot' element={<ScenicSpots />} />
-      </Routes>
+      <Outlet />
     </div>
   )
 }

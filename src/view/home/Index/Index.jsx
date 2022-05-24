@@ -3,12 +3,51 @@ import ScenicSpotCard from '/src/components/ScenicSpotCard/ScenicSpotCard'
 import HotelCard from '/src/components/HotelCard/HotelCard'
 import RestaurantCard from '/src/components/RestaurantCard/RestaurantCard'
 import { useNavigate } from 'react-router-dom'
-export default function Index({ handleSetSearchTab, defaultData }) {
+import { useState, useEffect } from 'react'
+import { fetchScenicSpotAll, fetchHotelAll, fetchRestaurantAll } from '/src/apis/tourism'
+
+export default function Index() {
   const navigate = useNavigate()
   const handleToSearch = (type) => {
     navigate(`search/${type}`)
-    handleSetSearchTab(type)
   }
+
+  const [defaultData, setDefaultData] = useState({
+    scenicSpot: [],
+    hotel: [],
+    restaurant: []
+  })
+
+  useEffect(() => {
+    fetchScenicSpotAll({
+      $filter: `City eq '雲林縣' and Picture/PictureUrl3 ne null`,
+      $top: 3
+    }).then(({ data }) => {
+      const newDefault = defaultData
+      newDefault.scenicSpot = data
+      setDefaultData({ ...newDefault })
+    })
+
+    fetchHotelAll({
+      $filter: `City eq '臺北市' and Grade eq '五星級'`,
+      $top: 4
+    }).then(({ data }) => {
+      const newDefault = defaultData
+      newDefault.hotel = data
+      setDefaultData({ ...newDefault })
+    })
+
+    fetchRestaurantAll({
+      $filter: `City eq '彰化縣' and Picture/PictureUrl3 ne null and WebsiteUrl ne null`,
+      $top: 6
+    }).then(({ data }) => {
+      const newDefault = defaultData
+      newDefault.restaurant = data
+      setDefaultData({ ...newDefault })
+    })
+  }, [])
+
+  useEffect(() => {}, [defaultData])
 
   return (
     <div className='home-index'>

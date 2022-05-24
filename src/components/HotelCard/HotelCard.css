@@ -1,4 +1,5 @@
 .hotel.main {
+  cursor: pointer;
   height: 373px;
   width: 265px;
   @apply rounded-2xl overflow-hidden border border-j-black-100;

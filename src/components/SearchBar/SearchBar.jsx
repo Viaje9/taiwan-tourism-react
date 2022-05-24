@@ -96,6 +96,7 @@ export default function SearchBar({ tab, handleSetSearchTab }) {
   }
 
   const search = () => {
+    setSearchData([])
     setLoading(true)
     fetchApi()(apiParams())
       .then(({ data }) => {
